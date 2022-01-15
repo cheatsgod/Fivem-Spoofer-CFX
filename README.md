@@ -21,3 +21,10 @@ Program blocks the outbounding and inbounding calls from adhesive so they won't 
 **Current status?**
 
 Seems to be working 14.1.2022
+
+
+
+
+
+https://user-images.githubusercontent.com/94861415/149637151-cccf9bbc-be1d-4287-9bb1-375e6efdb87b.mp4
+
