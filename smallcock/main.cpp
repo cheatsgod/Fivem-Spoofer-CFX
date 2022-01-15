@@ -30,31 +30,55 @@ int main()
 
 	)" << '\n';
 
-		std::cout << "  [1]  :  " << "clean traces" << std::endl;
-		std::cout << "  [2]  :  " << "enable network bypass" << std::endl;
-		std::cout << "  [3]  :  " << "disable network bypass" << std::endl;
-		std::cin >> choice;
-
 		g_network = std::make_unique<network>();
 		g_trace = std::make_unique<trace>();
 
-		switch (choice)
+		while (true)
 		{
-			case 1:
+			g_trace->m_fivem_path = g_trace->set_folder("Select FiveM Folder which contains FiveM.exe");
+
+			system("cls");
+
+			if (!g_trace->m_fivem_path.empty())
 			{
-				g_trace->setup();
+				std::cout << "  [Selected Folder]  " << g_trace->m_fivem_path << "\n" << std::endl;
+
+				std::cout << "  [1]  :  " << "clean traces" << std::endl;
+				std::cout << "  [2]  :  " << "enable network bypass" << std::endl;
+				std::cout << "  [3]  :  " << "disable network bypass" << std::endl;
+				std::cout << "  [4]  :  " << "reset fivem path" << std::endl;
+				std::cin >> choice;
+
+				switch (choice)
+				{
+					case 1:
+					{
+						g_trace->setup();
+					}
+					break;
+					case 2:
+					{
+						g_network->setup();
+					}
+					break;
+					case 3:
+					{
+						g_network->destroy();
+					}
+					break;
+					case 4:
+					{
+						g_trace->destroy();
+					}
+					break;
+				}
 			}
-			break;
-			case 2:
+			else
 			{
-				g_network->setup();
+				std::cout << "  [Error]  :  " << "select valid folder for FiveM" << "\n" << std::endl;
 			}
-			break;
-			case 3:
-			{
-				g_network->destroy();
-			}
-			break;
+
+			system("Pause");
 		}
 
 		system("Pause");
