@@ -3,7 +3,8 @@
 **For the people who are having problems.**  
 
 Most likely not going to personally help you but you can ask other users about it here.
-https://discord.gg/Db7BUuv9Zv
+
+https://discord.gg/bzfWPSsDfR
 
 **What's the purpose of this?**
 
