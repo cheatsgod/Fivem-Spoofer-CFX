@@ -39,8 +39,11 @@ void network::setup()
 
 		// Block the steam processes
 		auto steam_process = subprocess_path + "\\" + "FiveM_" + processes + "SteamChild.exe";
+		
 		block_connection(steam_process);
-	}
+	}	// Block the steam processes
+		auto steam_process = subprocess_path + "\\" + "FiveM_" + processes + "SteamChild.exe";
+		block_connection(steam_process);
 
 }
 

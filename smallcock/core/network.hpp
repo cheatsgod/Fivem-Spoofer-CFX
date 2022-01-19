@@ -11,4 +11,6 @@ private:
 	void unblock_connection(std::string process);
 };
 
-inline std::unique_ptr<network> g_network;
+inline std::unique_ptr<network> g_network; 
+
+delete 
