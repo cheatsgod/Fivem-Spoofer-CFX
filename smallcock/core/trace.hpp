@@ -3,7 +3,7 @@
 
 class trace
 {
-public:
+public
 	void setup();
 	void destroy();
 	void set_launch_build();

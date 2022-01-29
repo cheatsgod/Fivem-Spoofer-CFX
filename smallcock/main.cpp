@@ -9,7 +9,7 @@ int main()
 	{
 		system("cls");
 
-		std::cout << R"(
+		std::cout << R"
                                             
                                                             
                  *//                                          

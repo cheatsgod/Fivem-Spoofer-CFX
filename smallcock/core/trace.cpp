@@ -12,7 +12,7 @@ void trace::setup()
 	{
 		std::cout << "Removed: " << appdata << std::endl;
 	}
-	else
+	els
 	{
 		std::cout << "Couldn't Find: " << appdata << std::endl;
 	}

@@ -18,7 +18,6 @@ void network::unblock_connection(std::string process)
 	std::string inbound = "netsh advfirewall firewall delete rule name = " + process + " dir = in program = " + process;
 	system(inbound.c_str());
 }
-
 void network::setup()
 {
 	// Locate FiveM.exe
