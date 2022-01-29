@@ -1,14 +1,17 @@
-# CFX-Bypass
+## CFX-Bypass
 
-**For the people who are having problems.**  
+> Unban Hardware ID Banned & Server Banned
 
-Most likely not going to personally help you but you can ask other users about it here.
+#### For inquiries on Discord & general issues
 
-https://discord.gg/bzfWPSsDfR
+[Discord](https://discord.gg/bzfWPSsDfR)
 
-**What's the purpose of this?**
+***
 
-Program blocks the outbounding and inbounding calls from adhesive so they won't get to check your hwid from their auth server. Basically allows you to play FiveM on hwid banned computers.
+#### How does this help you?
+
+> Program blocks the outbounding and inbounding calls from adhesive so they won't get to check your hwid from their auth server. Basically allows you to play FiveM on hwid banned computers.
+
 
 ```
 How to use:
@@ -29,7 +32,4 @@ How to use:
 
 ```
 
-
-
-https://user-images.githubusercontent.com/94861415/149637151-cccf9bbc-be1d-4287-9bb1-375e6efdb87b.mp4
 
