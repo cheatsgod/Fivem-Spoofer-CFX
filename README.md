@@ -4,7 +4,7 @@
 
 #### For inquiries on Discord & general issues
 
-[Discord](https://discord.gg/bzfWPSsDfR)
+## [Discord](https://discord.gg/FeeWGNmhHx) Join
 
 ***
 
