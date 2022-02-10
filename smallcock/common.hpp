@@ -18,4 +18,4 @@
 #include <netfw.h
 
 
-.Deleete
+.Delete
