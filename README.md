@@ -5,7 +5,7 @@
 
 #### For inquiries on Discord & general issues
 
-### [Discord.gg/Sarnax](https://discord.com/invite/sarnax)
+### Sell Cheating Private / Source code Contact discord  [Discord.gg/Sarnax](https://discord.com/invite/sarnax) 
 
 ***
 
