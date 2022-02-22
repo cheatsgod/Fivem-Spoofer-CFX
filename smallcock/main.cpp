@@ -47,6 +47,7 @@ int main()
 				std::cout << "  [Launch Build]  " << g_trace->get_launch_build() << "\n" << std::endl;
 	
 				std::cout << "  [1]  :  " << "clean traces" << std::endl;
+				std::cout << "  [1]  :  " << "clean traces" << std::endl;
 				std::cout << "  [2]  :  " << "enable network bypass" << std::endl;
 				std::cout << "  [3]  :  " << "disable network bypass" << std::endl;
 				std::cout << "  [4]  :  " << "reset fivem path" << std::endl;
@@ -93,4 +94,5 @@ int main()
 		system("Pause");
 	}
 
+}
 }
