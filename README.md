@@ -1,5 +1,5 @@
 ## CFX-Bypass 
-> Working 22/02/2022
+> Working 27/02/2022
 
 > Unban Hardware ID Banned & Server Banned
 
