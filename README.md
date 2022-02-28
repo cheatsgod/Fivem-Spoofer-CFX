@@ -37,10 +37,6 @@ How to use:
 5. NOTE: Don't ever open FiveM without the bypass. Otherwise they will ban your new rockstar account for using it in hwid banned computer.
 
 6. IMPORTANT: Enable the bypass before u leave server so "Destroy" call won't be sent to fivem when you leave server. It contains your hwid + ROS 
-
-
-Credit : Speedy
-
 ```
 
 
