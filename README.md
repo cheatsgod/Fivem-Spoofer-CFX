@@ -1,10 +1,9 @@
 ## CFX-Bypass 
-> Working 01/03/2022 // Unban Server & Hardware ID 
+Working 01/03/2022 // Unban Server & Hardware ID 
+> It is disgusting to steal my work for resale.
 
 
-#### For inquiries on Discord & general issues
-
-
+***
 
   <p align="center">
     <a href="https://discord.gg/bzfWPSsDfR">
@@ -12,7 +11,6 @@
     </a>
 </p>
 
-***
 
 #### 💬 For Sell Cheating & Support  : [discord.gg/Sarnax](https://discord.com/invite/sarnax) 
 > ##### Discord : Sarnax#9999
