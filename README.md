@@ -1,6 +1,6 @@
 ## CFX-Bypass 
 Working 01/03/2022 // Unban Server & Hardware ID 
-> It is disgusting to steal my work for resale.
+> credit : speedy << Is trash
 
 
 ***
