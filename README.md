@@ -12,10 +12,10 @@ Working 01/03/2022 // Unban Server & Hardware ID
 </p>
 
 
-#### 💬 For Sell Cheating & Support  : [discord.gg/Sarnax](https://discord.com/invite/sarnax)  New Server
+#### 💬 For  Support  : [discord.gg/Sarnax](https://discord.com/invite/sarnax)  New Server
 > ##### Discord : Sarnax#9999
-> - Craete Cheating Private // Spoofer and Source 
-> - Contact Discord to order.
+> - We give you privacy.
+> - come in to be the same society as us
 
 
 > -[ 💢 ] If you can't log in to the server, please add my friend because sometimes the invite link might be problematic.
