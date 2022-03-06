@@ -16,9 +16,6 @@ Working 01/03/2022 // Unban Server & Hardware ID
 > ##### Discord : Sarnax#9999
 > - We give you privacy.
 > - come in to be the same society as us
-
-
-> -[ 💢 ] If you can't log in to the server, please add my friend because sometimes the invite link might be problematic.
 ***
 
 
