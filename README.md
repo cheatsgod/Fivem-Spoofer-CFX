@@ -12,7 +12,7 @@ Working 01/03/2022 // Unban Server & Hardware ID
 </p>
 
 
-#### 💬 For  Support  : [discord.gg/Sarnax](https://discord.com/invite/sarnax)  New Server
+#### 💬 Access Discord to help / support 24 Hr.  : [discord.gg/Sarnax](https://discord.com/invite/sarnax)
 > ##### Discord : Sarnax#9999
 > - We give you privacy.
 > - come in to be the same society as us
