@@ -12,10 +12,9 @@ Working 01/03/2022 // Unban Server & Hardware ID
 </p>
 
 
-#### 💬 Access Discord to help / support 24 Hr.  : [discord.gg/Sarnax](https://discord.com/invite/sarnax)
+#### 💬 JOIN DISCORD : [discord.gg/Sarnax](https://discord.com/invite/sarnax)
 > ##### Discord : Sarnax#9999
-> Contact to order Cheating Private that is the most secure.
-> - We give you privacy.
+> - DM for buy Cheating Private & Source ( UD + Update Lifetime )
 > - come in to be the same society as us
 
 ***
