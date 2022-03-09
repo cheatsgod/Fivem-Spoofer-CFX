@@ -1,4 +1,4 @@
-## CFX-Bypass 
+https://discord.gg/2EhZ7VyYvA## CFX-Bypass 
 Working 01/03/2022 // Unban Server & Hardware ID 
 > credit : speedy << Is trash
 
@@ -12,7 +12,7 @@ Working 01/03/2022 // Unban Server & Hardware ID
 </p>
 
 
-#### 💬 JOIN DISCORD : [CLICK FOR JOIN DISCORD ](https://discord.com/invite/sarnaxofficial)
+#### 💬 JOIN DISCORD : [CLICK FOR JOIN DISCORD ](https://discord.gg/2EhZ7VyYvA)
 > ##### Discord : Sarnax#9999
 > - DM for buy Cheating Private & Source ( UD + Update Lifetime )
 > - come in to be the same society as us
