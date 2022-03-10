@@ -1,4 +1,4 @@
-## CFX-Bypass 
+## Unban bypass CFX
 Working 01/03/2022 // Unban Server & Hardware ID 
 > credit : speedy << Is trash
 
