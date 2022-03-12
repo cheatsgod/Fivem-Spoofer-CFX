@@ -8,14 +8,14 @@
 </p>
 
 
-#### 💬 Join Discord : [Discord.gg/Sarnax](https://discord.gg/sFUeS3E6Sz) (NEW SERVER)
+#### 💬 Join Discord & Support : [HEX SUPPORT](https://discord.gg/sFUeS3E6Sz) (New Server)
 > - DM for buy Cheating Private & Source
 > - come in to be the same society as us
 
 ***
 
 
-#### How does this help you?
+### How does this help you?
 
 > Program blocks the outbounding and inbounding calls from adhesive so they won't get to check your hwid from their auth server. Basically allows you to play FiveM on hwid banned computers.
 
