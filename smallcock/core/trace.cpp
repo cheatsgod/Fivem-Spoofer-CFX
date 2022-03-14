@@ -12,7 +12,7 @@ void trace::setup()
 	{
 		std::cout << "Removed: " << appdata << std::endl;
 	}
-	els
+	else
 	{
 		std::cout << "Couldn't Find: " << appdata << std::endl;
 	}
@@ -122,21 +122,3 @@ std::string trace::get_launch_build()
 }
 
 
-void trace::set_launch_build()
-{
-	int choice;
-
-	std::vector<const char*> m_builds = { "2545", "2372", "2189", "2060", "1604" };
-
-	for (int i = 0; i < m_builds.size(); i++)
-	{
-		std::cout << "  [" << i + 1 << "]  :  " << m_builds[i] << std::endl;
-	}
-	std::cin >> choice;
-
-	auto path = std::string(m_fivem_path + m_citizen_ini_path).c_str();
-
-	if (std::filesystem::exists(path))
-	{
-		WritePrivateProfileString("Game", "SavedBuildNumber", m_builds[choice - 1], path);
-	}
