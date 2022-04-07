@@ -18,6 +18,7 @@
 
 > Program blocks the outbounding and inbounding calls from adhesive so they won't get to check your hwid from their auth server. Basically allows you to play FiveM on hwid banned computers.
 
+SEE VIDEO : https://youtu.be/AdJvwBuUcgQ
 
 ```
 How to use:
@@ -35,5 +36,5 @@ How to use:
 6. IMPORTANT: Enable the bypass before u leave server so "Destroy" call won't be sent to fivem when you leave server. It contains your hwid + ROS 
 ```
 
-Working 15/03/2565
+Working 07/04/2565
 
