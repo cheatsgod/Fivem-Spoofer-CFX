@@ -1,4 +1,4 @@
-## SPOOFER UNBAN FIVEM HWID / 365 DAY
+## SPOOFER FIVEM HWID / 365 DAY
 
 * `  Remove the ban on Hardware ID 13 DAY and 365 days or permanently, hope you are happy.`
 ***
@@ -14,7 +14,7 @@
     </a>
 </p>
 
-### 📌・  JOIN DISCORD / SUPPORT : [HEX COMMUNITY](https://discord.gg/S2NxQRvsvn) 
+### 📌・  JOIN DISCORD / PRICES : [HEX COMMUNITY](https://discord.gg/S2NxQRvsvn) 
 
 * `👋 SELL CHEATING PRIVATE / SPOOFER / SOURCE CODE / ETC `
 * ` UPDATE FREE LIFETIME & UD `
