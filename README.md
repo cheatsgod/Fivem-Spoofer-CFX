@@ -36,26 +36,21 @@ Program blocks the outbounding and inbounding calls from adhesive so they won't 
 ***
 
 
-
-https://user-images.githubusercontent.com/94861415/164340338-838946be-0c3c-4a97-8a53-7cc2a12624f3.mp4
+## SEE VIDEO : https://www.youtube.com/watch?v=8k8jkBW5vg8&ab_channel=Sarnax
 
 
 
 
 ### How to use:
 
-* `  1. Clean Traces`
-
-* `  2. Enable Bypass`
-
-* `  3. Log in to new rockstar account without ban. The account must be unused, because fivem is banning the new accounts if your opening it without the bypass with hwid banned computer.`
-
-* `  4. Try joining server if it returns error, then disable the bypass and try joining the server.`
-
-* `  5. NOTE: Don't ever open FiveM without the bypass. Otherwise they will ban your new rockstar account for using it in hwid banned computer.`
-
-* `  6. IMPORTANT: Enable the bypass before u leave server so "Destroy" call won't be sent to fivem when you leave server. It contains your hwid + ROS `
+```
+1・clean traces
+2・enable network bypass
+3・disable network bypass
+4・reset fivem path
+5・new rockstar accout
+" JOIN GAME " THIS FREE : NOT PRICES :)
+```
 
 
-Working 21/2022
 
