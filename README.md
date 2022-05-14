@@ -14,7 +14,7 @@
     </a>
 </p>
 
-### 📌・  JOIN DISCORD / SHOP  : [HEX COMMUNITY](https://discord.gg/S2NxQRvsvn) 
+### 📌・   JOIN DISCORD / SHOP : [HEX COMMUNITY](https://discord.gg/S2NxQRvsvn) 
 
 * `👋 SELL CHEATING PRIVATE / SPOOFER / SOURCE CODE / ETC `
 * `✔️ UPDATE FREE & LIFETIME & UNDETECTED & BYPASS DRIVER , INJECTOR `
