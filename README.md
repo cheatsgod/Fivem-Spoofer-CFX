@@ -14,7 +14,7 @@
     </a>
 </p>
 
-### 📌・ DISCORD : [HEX PROJECT](https://discord.gg/S2NxQRvsvn)  
+### 📌・ DISCORD : [HEX PROJECT](https://discord.com/users/943374631644045363) / ADD FRIEND FOR INVITE
 
 * `👋 SELL CHEATING PRIVATE / SPOOFER / SOURCE CODE / ETC `
 * `✔️ UPDATE FREE & LIFETIME & UNDETECTED & BYPASS DRIVER , INJECTOR `
