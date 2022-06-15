@@ -2,20 +2,16 @@
 
 * `  Remove the ban on Hardware ID 13 DAY and 365 days or permanently, hope you are happy.`
 ***
+
   <p align="center">
     <a href="https://discord.com/users/943374631644045363">
         <img title="Sarnax discord" alt="SarnaxLii's discord" src="https://discord.c99.nl/widget/theme-3/943374631644045363.png"/>
     </a>
 </p>
 
-<p align="center">
-    <a href="https://discord.gg/S2NxQRvsvn">
-        <img title="Sarnax discord" alt="SarnaxLii's discord" src="https://discordapp.com/api/guilds/928580076633739274/widget.png?style=banner2"/>
-    </a>
-</p>
 
-### 📌・ DISCORD : [HEX PROJECT](https://discord.gg/fYnQePhkt7) / DM FOR BUY
-#### ・ Now we make the server private. when you buy our products you will be invited / We do this to prevent the server from being deleted.
+### 📌・ DISCORD : [HEX SERVER](https://discord.gg/JsxqNHgR4m) 
+
 
 * `👋 SELL CHEATING PRIVATE / SPOOFER / SOURCE CODE / ETC `
 * `✔️ UPDATE FREE & LIFETIME & UNDETECTED & BYPASS DRIVER , INJECTOR `
