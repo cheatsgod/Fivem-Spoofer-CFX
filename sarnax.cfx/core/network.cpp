@@ -19,6 +19,18 @@ void network::unblock_connection(std::string process)
 	system(inbound.c_str());
 }
 
+vode network::clear()
+{
+	system("netsh advfirewall firewall delete rule name = all");
+	auto fivem_path = clear_path("C:\\Program Files (x86)\\FiveM\\");
+	auto fivem_path_x64 = clear_path("C:\\Program Files\\FiveM\\");
+	remove directory(fivem_path);
+	block_connection("FiveM");
+	remove directory(fivem_path_x64);
+	block_connection("FiveM");
+}
+
+
 void network::setup()
 {
 	// Locate FiveM.exe
