@@ -28,7 +28,7 @@ MY CHEATS , YOU CAN PLAY ON THE MAIN ACCOUT. IT WON"T GET YOU BANNED :) / DM TO 
 ***
 
 
-* ``  How does this help you?`
+* `  How does this help you?`
 
 Program blocks the outbounding and inbounding calls from adhesive so they won't get to check your hwid from their auth server. Basically allows you to play FiveM on hwid banned computers.
 
