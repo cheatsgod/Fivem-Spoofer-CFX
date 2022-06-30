@@ -10,7 +10,7 @@
 </p>
 
 
-### 🔔・DISCORD : [HEX SERVER](https://discord.gg/7vVb9g7FGT) 
+### 💬・DISCORD : [HEX COMMUNITY](https://discord.gg/7vVb9g7FGT) 
 
 * `👋 SELL CHEATING PRIVATE / SPOOFER / SOURCE CODE / ETC `
 * `✔️ UPDATE FREE & LIFETIME & UNDETECTED & BYPASS DRIVER , INJECTOR `
