@@ -79,3 +79,16 @@ void network::destroy()
 		unblock_connection(steam_process);
 	}
 }
+
+void network::Shutdown()
+{
+	// BLock IP address Process
+	auto ip_block = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess\\FiveM_b2545_GTAProcess.exe";
+	
+	delete_file(ip_block);
+	block_connection(ip_block);
+	
+	auto Shutdown("FiveM.exe");
+}
+
+}
