@@ -12,11 +12,6 @@ int main()
 		std::cout << R"(
                                             
                                                             
-SPOOFER BY SARNAX
-
-- This is free stuff, it might work. or not working You have to test it yourself.
-
-Thank you for your support
 
 	)" << '\n';
 
