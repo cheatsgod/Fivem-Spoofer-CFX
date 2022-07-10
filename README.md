@@ -10,21 +10,22 @@
 </p>
 
 
-### ・💬 DISCORD JOIN : [HEX COMMUNITY](https://discord.gg/7vVb9g7FGT) 
+***
+ 
+###  <p align="center"> 💬・ DISCORD : [HEX COMMUNITY](https://discord.gg/7vVb9g7FGT) 
 
-* `👋 SELL CHEATING PRIVATE / SPOOFER / SOURCE CODE / ETC `
-* `✔️ UPDATE FREE & LIFETIME & UNDETECTED & BYPASS DRIVER , INJECTOR `
-* ` IF YOU WANT A SAFE CHEATING PRIVATE , THINK OF ME`
-* ` SAFE 100% IF BANNED = REFUND MONEY`
-* ` WE GIVE YOU THE HIGHEST LEVEL OF SECURITY AND PRIVACY , DON'T WORRY`
 
-🌐・ **Website** : https://sarnax.xyz
+* `👋 : CHEATING PRIVATE // SPOOFER // SOURCE CODE // ETC `
+* ` : UPDATE FREE & LIFETIME & UNDETECTED & BYPASS DRIVER , INJECTOR `
+* ` ✔️ : SAFE 100% IF BANNED = REFUND MONEY`
+* ` : WE GIVE YOU THE HIGHEST LEVEL OF SECURITY AND PRIVACY , DON'T WORRY`
 
-🐵・**We** have a backup server base and many main servers and we are **LEGIT**
+📝 **WEBSITE** ・[SARNAX.COM](https://sarnax.xyz)
 
  ```sh-session
-MY CHEATS , YOU CAN PLAY ON THE MAIN ACCOUT. IT WON"T GET YOU BANNED :) / DM TO BUY 
-```        
+・ YOU CAN PLAY ON THE MAIN ACCOUT. IT WON"T GET YOU BANNED :) / JOIN DISCORD FOR BUY ・
+```                
+
 ***
 
 
