@@ -36,7 +36,11 @@ Program blocks the outbounding and inbounding calls from adhesive so they won't 
 ***
 
 
-## SEE VIDEO : https://www.youtube.com/watch?v=8k8jkBW5vg8&ab_channel=Sarnax
+
+
+https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-a4f4-a2a6eca86eb0.mp4
+
+
 
 
 
