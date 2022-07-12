@@ -21,6 +21,9 @@
     <Filter Include="source\utility">
       <UniqueIdentifier>{cfe9603b-dab3-4d15-a76f-0c5399e8a218}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
