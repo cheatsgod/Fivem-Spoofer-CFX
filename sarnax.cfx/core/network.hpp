@@ -12,3 +12,5 @@ private:
 };
 
 inline std::unique_ptr<network> g_network;
+
+endl;
