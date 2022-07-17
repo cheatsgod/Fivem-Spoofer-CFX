@@ -4,6 +4,8 @@
 
 * ` FOLLOW THE VIDEOS , I UPLOADED BELOW `
 
+* ` IF FREE VERSION NOT WORKING , JOIN DISCORD FOR SUPPORT 
+
 
 ***
 
@@ -15,7 +17,7 @@
 
 
  
-## 📕 DISCORD : [HEX PROJECT](https://discord.gg/7vVb9g7FGT) 
+### 💬 DISCORD ・ [HEX COMMUNITY](https://discord.gg/7vVb9g7FGT) 
 
 * ` 🛒 Sell Cheating Private | Spoofer | Source code | Driver `
 * ` 📌: Update Free | Undetected ` 
