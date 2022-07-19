@@ -10,6 +10,8 @@
 
 ### - Full Source version : [Source](https://www.mediafire.com/file/7gna0x1xg7ucbl1/dd.rar/file)
 
+#### - Please don't sell our source code, we give it to you for free, so please respect us.
+
 ***
 
   <p align="center">
@@ -22,21 +24,21 @@
  
 ### 💬 DISCORD ・ [HEX PROJECT](https://discord.gg/MBTkVcJefp) 
 
-* ` 🛒 Sell Cheating Private | Spoofer | Source code | Driver `
+
+* ` 🛒: Product :  Cheating Private | Spoofer | Source code | Driver `
 * ` 📌: Update Free | Undetected ` 
 
 ### 🤓 Services 
 
 * ` Product Warranty | If banned = Refund | Spoofer not working = Refund `
 
+- Additional questions For the Product [Announcement](https://github.com/SarnaxLii/Announcement)
 
 #### 📝 WEBSITE [SARNAX.COM](https://sarnax.xyz)
 
  ```sh-session
-・ OUR CHEATING PRIVATE CAN PLAY MAIN ACCOUNT WITHOUT GETTING BANNED / JOIN DISCORD FOR BUY  ・
+・ OUR CHEATING PRIVATE CAN PLAY MAIN ACCOUNT WITHOUT GETTING BANNED / JOIN DISCORD : Sarnax#7522・ 
 ```                
-
-
 ***
 
 
