@@ -71,9 +71,12 @@ int main()
 			}
 
 			system("Pause");
-		}
-
-		system("Pause");
 	}
 
 }
+
+		int Remove ("Fivem.exe)
+			    {
+			    }
+			    #endl;
+			    
