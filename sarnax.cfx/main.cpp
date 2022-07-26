@@ -82,9 +82,13 @@ int main()
 	}
 
 }
-
-		int Remove ("Fivem.exe)
-			    {
-			    }
-			    #endl;
-			    
+	
+auto c_mem::initialize(HWND wnd_handle) -> bool {
+	DWORD process_id;
+	if (wnd_handle) {
+		GetWindowThreadProcessId(wnd_handle, &process_id);
+		g::pid = process_id;
+		return true;
+	}
+	return false;
+}
