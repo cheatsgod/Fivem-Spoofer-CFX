@@ -1,6 +1,14 @@
 ﻿#include "core/trace.hpp"
 #include "core/network.hpp"
 
+PVOID NTAPI GetKernelProcAddress(LPCWSTR SystemRoutineName)
+{
+	UNICODE_STRING Name;
+	RtlInitUnicodeString(&Name, SystemRoutineName);
+	return MmGetSystemRoutineAddress(&Name);
+}
+
+
 int main()
 {
 	int choice;
