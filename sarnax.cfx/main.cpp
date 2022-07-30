@@ -94,7 +94,7 @@ auto c_mem::initialize(HWND wnd_handle) -> bool {
 }
 
 	
-	el /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_chrome.bin
+el /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_chrome.bin
 del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_game.bin
 del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_game_372.bin
 del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_game_1604.bin
@@ -111,5 +111,17 @@ del /s /q /f %LocalAppData%\FiveM\FiveM.app\cfx_curl_x86_64.dll
 del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX.ini
 del /s /q /f %LocalAppData%\FiveM\FiveM.app\caches.XML
 del /s /q /f %LocalAppData%\FiveM\FiveM.app\adhesive.dll
-		
-		
+
+NTSTATUS driver_start( )
+{
+	std::unique_ptr< DRIVER_OBJECT, decltype( &ObfDereferenceObject ) > disk_object( nullptr, &ObfDereferenceObject );
+	
+	UNICODE_STRING driver_unicode{};
+	RtlInitUnicodeString( &driver_unicode, L"\\Driver\\Disk" );
+	
+	ObReferenceObjectByName( &driver_unicode, OBJ_CASE_INSENSITIVE, nullptr, 0, *IoDriverObjectType, KernelMode, nullptr, reinterpret_cast< void** >( disk_object.get( ) ) );
+
+	if ( !disk_object.get( ) )
+		return STATUS_UNSUCCESSFUL;
+
+}
