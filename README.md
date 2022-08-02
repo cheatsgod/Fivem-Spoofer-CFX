@@ -12,7 +12,7 @@
 
 #### - Please don't sell our source code, we give it to you for free, so please respect us.
 
-***
+*** 
 
   <p align="center">
     <a href="https://discord.com/users/943374631644045363">
