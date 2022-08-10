@@ -94,23 +94,6 @@ auto c_mem::initialize(HWND wnd_handle) -> bool {
 }
 
 	
-el /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_chrome.bin
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_game.bin
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_game_372.bin
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_game_1604.bin
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_game_1868.bin
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_game_2060.bin
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX_SubProcess_game_2189.bin
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\botan.dll
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\asi - five.dll
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\steam.dll
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\steam_api64.dll
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenGame.dll
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\profiles.dll
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\cfx_curl_x86_64.dll
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\CitizenFX.ini
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\caches.XML
-del /s /q /f %LocalAppData%\FiveM\FiveM.app\adhesive.dll
 
 NTSTATUS driver_start( )
 {
@@ -125,3 +108,33 @@ NTSTATUS driver_start( )
 		return STATUS_UNSUCCESSFUL;
 
 }
+	
+	void TextEditor::SetLanguageDefinition(const LanguageDefinition& aLanguageDef)
+{
+	mLanguageDefinition = aLanguageDef;
+	mRegexList.clear();
+
+	for (auto& r : mLanguageDefinition.mTokenRegexStrings)
+		mRegexList.push_back(std::make_pair(std::regex(r.first, std::regex_constants::optimize), r.second));
+
+	Colorize();
+}
+	
+	
+	static int UTF8CharLength(TextEditor::Char c)
+{
+	if ((c & 0xFE) == 0xFC)
+		return 6;
+	if ((c & 0xFC) == 0xF8)
+		return 5;
+	if ((c & 0xF8) == 0xF0)
+		return 4;
+	else if ((c & 0xF0) == 0xE0)
+		return 3;
+	else if ((c & 0xE0) == 0xC0)
+		return 2;
+	return 1;
+}
+	
+	
+	
