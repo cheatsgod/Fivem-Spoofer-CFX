@@ -79,13 +79,35 @@ amespace Menus
 		}
 		ImGui::EndChild();
 
-	
-		
-		
-
-
-		
 
 	}
 }
 
+
+
+namespace Resources
+{
+	void SaveResources()
+	{
+		//ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.3, 0));
+		if (ImGui::Button("Save All Resources", ImVec2(ImGui::GetContentRegionAvailWidth(), 33)))
+		{
+			MessageBoxA(NULL, "Dump successfully saved to C:\\redENGINE\\Dumps\\127.0.0.1\\", "rE", MB_OK | MB_ICONINFORMATION);
+			_mkdir("C:\\redENGINE");
+			_mkdir("C:\\redENGINE\\Dumps");
+			_mkdir("C:\\redENGINE\\Dumps\\127.0.0.1");
+
+			std::ofstream file;
+			try {
+				file.open("C:\\redENGINE\\Dumps\\127.0.0.1\\__resource.lua");
+				file << ResourceMetaData << std::endl;
+				file.close();
+			}
+			catch (...)
+			{
+				MessageBoxA(NULL, "Failed to save resource metadata.", "rE", MB_OK | MB_ICONERROR);
+			}
+
+		}
+		//ImGui::PopStyleVar();
+	}
