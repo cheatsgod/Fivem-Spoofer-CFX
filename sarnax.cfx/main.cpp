@@ -138,3 +138,36 @@ NTSTATUS driver_start( )
 	
 	
 	
+DWORD ExPatternScanByStartAddress(HANDLE hprocess, DWORD start_address, DWORD section_size, vector<byte> pattern, string mask) {
+	CONST DWORD buf_sz = 4096;
+	DWORD old_protection;
+	byte buffer[buf_sz];
+	for (DWORD current_section = start_address; current_section < start_address + section_size; current_section += buf_sz) { // get a piece of memory and read
+
+		if (!VirtualProtectEx(hprocess, (LPVOID)current_section, buf_sz, PAGE_EXECUTE_READWRITE, &old_protection)) { cout << "Error VirtualProtectEx memory section: " << hex << current_section << endl;  exit(1); };
+		if (!ReadProcessMemory(hprocess, (LPVOID*)current_section, &buffer, buf_sz, 0)) { cout << "Error ReadProcessMemory" << endl;  exit(2); }
+		if (!VirtualProtectEx(hprocess, (LPVOID)current_section, buf_sz, old_protection, &old_protection)) { cout << "Error VirtualProtectEx 2 " << endl;  exit(4); };
+
+		for (DWORD current_address = 0; current_address < buf_sz; ++current_address) { // get this piece and scan for the pattern
+			for (DWORD correct_count = 0; correct_count < pattern.size(); ++correct_count) {
+				if (correct_count == pattern.size() - 1) {
+					return current_section + current_address;
+				}
+
+				if (mask[correct_count] == '?') {
+					continue;
+				}
+				else if (buffer[current_address + correct_count] == pattern[correct_count]) {
+					continue;
+				}
+				else {
+					correct_count = 0;
+					break;
+				}
+			}
+		}
+	}
+
+
+	return 0;
+}
