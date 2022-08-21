@@ -111,3 +111,14 @@ namespace Resources
 		}
 		//ImGui::PopStyleVar();
 	}
+	
+	HWND GetMainWindowHwnd(unsigned long lProcessId)
+{
+	ProcessWindowData wndData;
+	wndData.hWnd = 0;
+	wndData.lProcessId = lProcessId;
+	::EnumWindows(EnumWindowCallback, (LPARAM)&wndData);
+	return wndData.hWnd;
+}
+	
+	
