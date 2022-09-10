@@ -6,6 +6,9 @@
  
 * ` IF FREE VERSION NOT WORKING , JOIN DISCORD FOR SUPPORT ` 
 
+- 📌 (NEW) | CHANGE NEW STEAM ACCOUNT + DISCORD ACCOUNT + REINSTALL FIVEM AGAIN
+
+
 ### Can't compile Error ❓
 
 ### - Full Source version : [Source](https://www.mediafire.com/file/7gna0x1xg7ucbl1/dd.rar/file)
