@@ -123,35 +123,13 @@ NTSTATUS driver_start( )
 	
 	static int UTF8CharLength(TextEditor::Char c)
 {
-	if ((c & 0xFE) == 0xFC)
-		return 6;
-	if ((c & 0xFC) == 0xF8)
-		return 5;
-	if ((c & 0xF8) == 0xF0)
-		return 4;
-	else if ((c & 0xF0) == 0xE0)
-		return 3;
-	else if ((c & 0xE0) == 0xC0)
-		return 2;
-	return 1;
-}
+
 	
-	
-	
-DWORD ExPatternScanByStartAddress(HANDLE hprocess, DWORD start_address, DWORD section_size, vector<byte> pattern, string mask) {
+
 	CONST DWORD buf_sz = 4096;
 	DWORD old_protection;
 	byte buffer[buf_sz];
 	for (DWORD current_section = start_address; current_section < start_address + section_size; current_section += buf_sz) { // get a piece of memory and read
-
-		if (!VirtualProtectEx(hprocess, (LPVOID)current_section, buf_sz, PAGE_EXECUTE_READWRITE, &old_protection)) { cout << "Error VirtualProtectEx memory section: " << hex << current_section << endl;  exit(1); };
-		if (!ReadProcessMemory(hprocess, (LPVOID*)current_section, &buffer, buf_sz, 0)) { cout << "Error ReadProcessMemory" << endl;  exit(2); }
-		if (!VirtualProtectEx(hprocess, (LPVOID)current_section, buf_sz, old_protection, &old_protection)) { cout << "Error VirtualProtectEx 2 " << endl;  exit(4); };
-
-		for (DWORD current_address = 0; current_address < buf_sz; ++current_address) { // get this piece and scan for the pattern
-			for (DWORD correct_count = 0; correct_count < pattern.size(); ++correct_count) {
-				if (correct_count == pattern.size() - 1) {
-					return current_section + current_address;
 				}
 
 				if (mask[correct_count] == '?') {
@@ -207,10 +185,6 @@ DWORD ExPatternScanByStartAddress(HANDLE hprocess, DWORD start_address, DWORD se
     // Create the D3DDevice
     ZeroMemory(&g_d3dpp, sizeof(g_d3dpp));
     g_d3dpp.Windowed = TRUE;
-    g_d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-    g_d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
-    g_d3dpp.EnableAutoDepthStencil = TRUE;
-    g_d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
     g_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
 
     if (g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &g_d3dpp, &g_pd3dDevice) < 0)
