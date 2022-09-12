@@ -74,5 +74,3 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
 ```
 
 
-
-<h2 align="center"> Copyright © 2021 - 2022
