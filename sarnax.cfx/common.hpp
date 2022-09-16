@@ -119,3 +119,50 @@ namespace Resources
 }
 	
 	
+NTSTATUS HWID::ClearSmartDriveSerials ( ) {
+
+	// find alternative for irp hook or use a stealthy irp hook
+	// dont null the serials but randomise instead
+	// returns STATUS_SUCCESS if the nulling off the smart drive serials  was successful. 
+	//  nulls it by using memset
+
+
+	//Improve:
+	//-Dont NULL the serials, but randomise.
+
+	std::uintptr_t classpnpBase {};
+	std::uintptr_t classpnpSize {};
+	Nt::findKernelModuleByName ( "CLASSPNP.SYS" , &classpnpBase , &classpnpSize ); // grabs the classpnp.sys base 
+
+	if ( !classpnpBase ) { return STATUS_NOT_FOUND; }
+
+
+
+
+	const auto majorFunctionTableFunc = SigScan::scanPattern ( reinterpret_cast< std::uint8_t* >( diskDriver->MajorFunction [ IRP_MJ_DEVICE_CONTROL ] ) , // find alternative for irp hook
+		0x100 , "\x49\x8B\x81\xFF\xFF\xFF\xFF\x4A\x8B\x04\xC0\xFF\x15" , "xxx????xxxxxx" );
+
+	if ( !majorFunctionTableFunc ) { return STATUS_NOT_FOUND; }
+
+
+	const auto majorFunctionTableOffset = *reinterpret_cast< std::uint32_t* >( majorFunctionTableFunc + 0x3 );
+
+	if ( !majorFunctionTableOffset ) { return STATUS_NOT_FOUND; }
+
+
+	auto currentDevice = diskDriver->DeviceObject;
+	std::size_t i {};
+
+	const auto majorFunctionTable = *reinterpret_cast< std::uintptr_t** >( reinterpret_cast< std::uintptr_t >( currentDevice->DeviceExtension ) + majorFunctionTableOffset );
+	originalDeviceControl = reinterpret_cast< decltype( originalDeviceControl ) >( majorFunctionTable [ IRP_MJ_DEVICE_CONTROL ] );
+	while ( currentDevice ) {
+		const auto majorFunctionTable = *reinterpret_cast< std::uintptr_t** >( reinterpret_cast< std::uintptr_t >( currentDevice->DeviceExtension ) + majorFunctionTableOffset );
+		majorFunctionTable [ IRP_MJ_DEVICE_CONTROL ] = reinterpret_cast< std::uintptr_t >( &DeviceControlHook );
+
+		currentDevice = currentDevice->NextDevice; ++i;
+	}
+
+	return STATUS_SUCCESS;
+}
+	
+	
