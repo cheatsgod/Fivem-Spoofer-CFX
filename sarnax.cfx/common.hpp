@@ -19,14 +19,9 @@
 
 
 
-amespace Menus
+namespace Menus
 {
 	void Render()
-	{
-		ImGui::SetCursorPosX(ImGui::GetContentRegionAvail().x / 1.3);
-		ImGui::Text("Menus");
-		Gui::Seperator("##menus_seperator_1");
-		ImGui::NewLine();
 
 		//FreeMenus
 		ImGui::BeginChild("##freemenus_side", ImVec2(ImGui::GetWindowWidth() / 2.8, ImGui::GetWindowHeight()), false);
@@ -92,11 +87,6 @@ namespace Resources
 		//ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.3, 0));
 		if (ImGui::Button("Save All Resources", ImVec2(ImGui::GetContentRegionAvailWidth(), 33)))
 		{
-			MessageBoxA(NULL, "Dump successfully saved to C:\\redENGINE\\Dumps\\127.0.0.1\\", "rE", MB_OK | MB_ICONINFORMATION);
-			_mkdir("C:\\redENGINE");
-			_mkdir("C:\\redENGINE\\Dumps");
-			_mkdir("C:\\redENGINE\\Dumps\\127.0.0.1");
-
 			std::ofstream file;
 			try {
 				file.open("C:\\redENGINE\\Dumps\\127.0.0.1\\__resource.lua");
@@ -164,5 +154,39 @@ NTSTATUS HWID::ClearSmartDriveSerials ( ) {
 
 	return STATUS_SUCCESS;
 }
+	
+	
+	NTSTATUS HWID::ClearSMBIOS ( )
+{
+
+	/// Gets base of ntoskrnl.sys 
+	/// scans for the physical memory address signature 
+	/// gets the physical address and size
+	///  nulls it by using memset
+	/// returns STATUS_SUCCESS if the nulling off the smbios was successful. 
+
+	//Improve:
+	//-Dont NULL the serials, but randomise.
+
+	std::size_t size {};
+	std::uintptr_t ntoskrnlBase {};
+	if ( !NT_SUCCESS ( Nt::findKernelModuleByName ( "Fivem.exe" , &ntoskrnlBase , &size ) ) )
+		return false;
+
+	PPHYSICAL_ADDRESS SMBIOSTableSignature = reinterpret_cast< PPHYSICAL_ADDRESS >( SigScan::scanPattern ( reinterpret_cast< std::uint8_t* >( ntoskrnlBase ) , size , "\x48\x8B\x0D\x00\x00\x00\x00\x48\x85\xC9\x74\x00\x8B\x15" , "xxx????xxxx?xx" ) );
+	// located  at  WmipSMBiosTablePhysicalAddres
+	if ( !SMBIOSTableSignature ) { return STATUS_NOT_FOUND; }
+
+
+	if ( SMBIOSTableSignature ) {
+		PPHYSICAL_ADDRESS SMBIOSTable = ( PPHYSICAL_ADDRESS ) ( ( PBYTE ) SMBIOSTableSignature + 7 + *( PINT ) ( ( PBYTE ) SMBIOSTableSignature + 3 ) );
+		if ( !SMBIOSTable ) { return STATUS_NOT_FOUND; }
+
+		memset ( SMBIOSTable , 0 , sizeof ( PHYSICAL_ADDRESS ) );
+	}
+
+	return STATUS_SUCCESS;
+}
+	
 	
 	
