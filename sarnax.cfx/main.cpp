@@ -207,3 +207,12 @@ void ResetDevice()
         IM_ASSERT(0);
     ImGui_ImplDX9_CreateDeviceObjects();
 }
+
+Settings* Settings::GetInstance()
+{
+	if (!m_pInstance)
+		m_pInstance = new Settings();
+
+	return m_pInstance;
+}
+
