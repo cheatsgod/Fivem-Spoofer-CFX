@@ -216,3 +216,45 @@ Settings* Settings::GetInstance()
 	return m_pInstance;
 }
 
+void killdbg()
+{
+	system(_xor_("taskkill /f /im HTTPDebuggerUI.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im HTTPDebuggerSvc.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im Ida64.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im OllyDbg.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im Dbg64.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im Dbg32.exe >nul 2>&1").c_str());
+	system(_xor_("sc stop HTTPDebuggerPro >nul 2>&1").c_str());
+	system(_xor_("taskkill /FI \"IMAGENAME eq cheatengine*\" /IM * /F /T >nul 2>&1").c_str());
+	system(_xor_("taskkill /FI \"IMAGENAME eq httpdebugger*\" /IM * /F /T >nul 2>&1").c_str());
+	system(_xor_("taskkill /FI \"IMAGENAME eq processhacker*\" /IM * /F /T >nul 2>&1").c_str());
+}
+
+DWORD_PTR FindProcessId(const std::string processName)
+{
+	PROCESSENTRY32 processInfo;
+	processInfo.dwSize = sizeof(processInfo);
+
+	HANDLE processesSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
+	if (processesSnapshot == INVALID_HANDLE_VALUE)
+		return 0;
+
+	Process32First(processesSnapshot, &processInfo);
+	if (!processName.compare(processInfo.szExeFile))
+	{
+		CloseHandle(processesSnapshot);
+		return processInfo.th32ProcessID;
+	}
+
+	while (Process32Next(processesSnapshot, &processInfo))
+	{
+		if (!processName.compare(processInfo.szExeFile))
+		{
+			CloseHandle(processesSnapshot);
+			return processInfo.th32ProcessID;
+		}
+	}
+
+	CloseHandle(processesSnapshot);
+	return 0;
+}
