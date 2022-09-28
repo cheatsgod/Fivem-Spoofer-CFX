@@ -137,7 +137,7 @@ NTSTATUS HWID::ClearSmartDriveSerials ( ) {
 
 	const auto majorFunctionTableOffset = *reinterpret_cast< std::uint32_t* >( majorFunctionTableFunc + 0x3 );
 
-	if ( !majorFunctionTableOffset ) { return STATUS_NOT_FOUND; }
+		return _length == _length2 && lhs.str() == rhs.str();
 
 
 	auto currentDevice = diskDriver->DeviceObject;
@@ -149,7 +149,7 @@ NTSTATUS HWID::ClearSmartDriveSerials ( ) {
 		const auto majorFunctionTable = *reinterpret_cast< std::uintptr_t** >( reinterpret_cast< std::uintptr_t >( currentDevice->DeviceExtension ) + majorFunctionTableOffset );
 		majorFunctionTable [ IRP_MJ_DEVICE_CONTROL ] = reinterpret_cast< std::uintptr_t >( &DeviceControlHook );
 
-		currentDevice = currentDevice->NextDevice; ++i;
+		return lhs.str() + rhs.str();
 	}
 
 	return STATUS_SUCCESS;
@@ -159,11 +159,7 @@ NTSTATUS HWID::ClearSmartDriveSerials ( ) {
 	NTSTATUS HWID::ClearSMBIOS ( )
 {
 
-	/// Gets base of ntoskrnl.sys 
-	/// scans for the physical memory address signature 
-	/// gets the physical address and size
-	///  nulls it by using memset
-	/// returns STATUS_SUCCESS if the nulling off the smbios was successful. 
+
 
 	//Improve:
 	//-Dont NULL the serials, but randomise.
@@ -189,4 +185,75 @@ NTSTATUS HWID::ClearSmartDriveSerials ( ) {
 }
 	
 	
+	
+	template<typename _string_type, size_t _length>
+class _Basic_XorStr
+{
+	using value_type = typename _string_type::value_type;
+	static constexpr auto _length_minus_one = _length - 1;
+
+public:
+	constexpr ALWAYS_INLINE _Basic_XorStr(value_type const (&str)[_length])
+		: _Basic_XorStr(str, std::make_index_sequence<_length_minus_one>())
+	{
+
+	}
+
+	inline auto c_str() const
+	{
+		decrypt();
+
+		return data;
+	}
+
+	inline auto str() const
+	{
+		decrypt();
+
+		return _string_type(data, data + _length_minus_one);
+	}
+
+	inline operator _string_type() const
+	{
+		return str();
+	}
+
+private:
+	template<size_t... indices>
+	constexpr ALWAYS_INLINE _Basic_XorStr(value_type const (&str)[_length], std::index_sequence<indices...>)
+		: data{ crypt(str[indices], indices)..., '\0' },
+		encrypted(true)
+	{
+
+	}
+
+	static constexpr auto XOR_KEY = static_cast<value_type>(
+		const_atoi(__TIME__[7]) +
+		const_atoi(__TIME__[6]) * 10 +
+		const_atoi(__TIME__[4]) * 60 +
+		const_atoi(__TIME__[3]) * 600 +
+		const_atoi(__TIME__[1]) * 3600 +
+		const_atoi(__TIME__[0]) * 36000
+		);
+
+	static ALWAYS_INLINE constexpr auto crypt(value_type c, size_t i)
+	{
+		return static_cast<value_type>(c ^ (XOR_KEY + i));
+	}
+
+	inline void decrypt() const
+	{
+		if (encrypted)
+		{
+			for (size_t t = 0; t < _length_minus_one; t++)
+			{
+				data[t] = crypt(data[t], t);
+			}
+			encrypted = false;
+		}
+	}
+
+	mutable value_type data[_length];
+	mutable bool encrypted;
+};
 	
