@@ -1,76 +1,49 @@
-## SPOOFER FIVEM HWID / 365 DAY
+## FIVEM SPOOFER 365 DAY 
 
-* `  REMOVE HARDWARE ID BANNED | 13 DAY | 365 DAY | 250 + DAY | ETC...`
+### 🌟 〢 How To Use
+- Download the File here [Release](https://github.com/Fnoberz/FiveM-CFX-Spoofer/releases/tag/fivem) | Scroll down the text for a video tutorial.
+- The video is an older **version of Fivem** or about a few months ago. That's why only Rockstar has changed.
 
-* ` FOLLOW THE VIDEOS, I UPLOADED BELOW `
+✔ How To Working 
+- Reinstall Windows > Change Rockstar Account , Discord Account , Steam account , Remove Xbox 
+- I don't want to change my account because I already have a Whitelist server | Join [Discord Server](https://discord.gg/MBTkVcJefp)
+
+
  
-* ` IF THE FREE VERSION NOT WORKING, JOIN DISCORD FOR SUPPORT ` 
-` 
-- ` 📌 (NEW) | CHANGE NEW STEAM ACCOUNT + DISCORD ACCOUNT + REINSTALL FIVEM AGAIN` 
-
-
-### Can't compile Error ❓
-
-### - Full Source version : [Source](https://www.mediafire.com/file/7gna0x1xg7ucbl1/dd.rar/file)
-
-#### - Please don't sell our source code, we give it to you for free, so please respect us.
-
 *** 
   <p align="center">
     <a href="https://discord.com/users/943374631644045363">
-        <img title="Fnoberz discord" alt="Fnoberz's discord" src="https://discord.c99.nl/widget/theme-3/943374631644045363.png"/>
+        <img title="Fnoberz server discord" alt="Fnoberz's discord" src="https://discord.c99.nl/widget/theme-4/943374631644045363.png"/>
     </a>
 </p> 
 
-
  
-***
- 
-### 💬 DISCORD ・ [CLOUD | PROJECT](https://discord.gg/MBTkVcJefp) 
+#### 💬 DISCORD ・ [CLOUD | PROJECT](https://discord.gg/MBTkVcJefp) 
 
 
-* ` 🛒: Product:  Cheating Private | Spoofer | Source code | Driver `
-* ` 📌: Update Free | Undetected ` 
+*  🛒: `PRODUCT:  PRIVATE CHEATING | SPOOFER PRIVATE | SOURCE CODE| ETC.`
+*  📌: `UPDATE FREE LIFETIME | LEGIT | CHEATING IS LIFETIME ONLY `
 
-### 🤓 Services 
 
-* ` Product Warranty | If banned = Refund | Spoofer not working = Refund `
+### 🤑 Services 
+
+* ` PRODUCT WARANTY | IF BANNED = REFUND MONEY | SPOOFER NOT WORKING = REFUND MONEY `
 
 - Additional questions For the Product [Announcement](https://github.com/SarnaxLii/Announcement)
+- [Discord Server](https://discord.gg/MBTkVcJefp)
 
-#### 📝 WEBSITE [FNOBERZ.COM](http://fnoberz.com/)
+
+#### 📝 WEBSITE [FNOBERZ.COM](http://fnoberz.com/)  | Portfolio
 
  ```sh-session
 ・ OUR CHEATING PRIVATE CAN PLAY MAIN ACCOUNT WITHOUT GETTING BANNED / JOIN DISCORD: Fnoberz#0001・ 
-```                
-***
-
-
-* `  How does this help you?`
-
-Program blocks the outbound and inbounding calls from adhesive so they won't get to check your HWID from their auth server. Basically allows you to play FiveM on HWID-banned computers.
-
-***
-
+```      
 
 
 
 https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-a4f4-a2a6eca86eb0.mp4
 
+***
 
-
-
-
-
-### How to use:
-
-```
-1・Clean any traces of a ban
-2・Enable network bypass
-3・Disable network bypass
-4・reset FIVEM path
-5・Create a new rockstar account
-" JOIN THE GAME " THIS IS FREE, NOT PAID.
-```
-
+##  <p align="center"> Copyright © 2022
 
