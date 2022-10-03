@@ -28,57 +28,34 @@ int main()
 
 		while (true)
 		{
-			g_trace->m_fivem_path = g_trace->set_folder("Select FiveM Folder which contains FiveM.exe");
+			wchar_t* GetFileNameFromPath(wchar_t* Path)
+{
+	wchar_t* LastSlash = NULL;
+	for (DWORD i = 0; Path[i] != NULL; i++)
+	{
+		if (Path[i] == '\\')
+			LastSlash = &Path[i + 1];
+	}
+	return LastSlash;
+}
+wchar_t* RemoveFileExtension(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
+{
+	DWORD64 dwModuleBaseAddress = 0;
+	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, dwProcID);
+	if (hSnapshot != INVALID_HANDLE_VALUE)
+			LastDot = &FullFileName[i];
 
-			system("cls");
-
-			if (!g_trace->m_fivem_path.empty())
-			{
-				std::cout << "  [Selected Folder]  " << g_trace->m_fivem_path << std::endl;
-				std::cout << "  [Launch Build]  " << g_trace->get_launch_build() << "\n" << std::endl;
-	
-				std::cout << "  [1]  :  " << "clean traces" << std::endl;
-				std::cout << "  [2]  :  " << "enable network bypass" << std::endl;
-				std::cout << "  [3]  :  " << "disable network bypass" << std::endl;
-				std::cout << "  [4]  :  " << "reset fivem path" << std::endl;
-				std::cout << "  [5]  :  " << "edit launch options" << std::endl;
-				std::cin >> choice;
-
-				switch (choice)
-				{
-					case 1:
-					{
-						g_trace->setup();
-					}
-					break;
-					case 2:
-					{
-						g_network->setup();
-					}
-					break;
-					case 3:
-					{
-						g_network->destroy();
-					}
-					break;
-					case 4:
-					{
-						g_trace->destroy();
-					}
-					break;
-					case 5:
-					{
-						g_trace->set_launch_build();
-					}
-					break;
-				}
-			}
-			else
-			{
-				std::cout << "  [Error]  :  " << "select valid folder for FiveM" << "\n" << std::endl;
-			}
-
-			system("Pause");
+	for (DWORD j = 0; j < OutputBufferSize; j++)
+	{
+		OutputBuffer[j] = FullFileName[j];
+		if (&FullFileName[j] == LastDot)
+		{
+			OutputBuffer[j] = NULL;
+			break;
+		}
+	}
+	OutputBuffer[OutputBufferSize - 1] = NULL;
+	retu
 	}
 
 }
@@ -111,13 +88,14 @@ NTSTATUS driver_start( )
 	
 	void TextEditor::SetLanguageDefinition(const LanguageDefinition& aLanguageDef)
 {
-	mLanguageDefinition = aLanguageDef;
-	mRegexList.clear();
+	*(ULONG*)Size = DataDirectory->Size;
+	if (MappedAsImage || DataDirectory->VirtualAddress < SizeOfHeaders)
+		return (char*)Base + DataDirectory->VirtualAddress;
 
-	for (auto& r : mLanguageDefinition.mTokenRegexStrings)
-		mRegexList.push_back(std::make_pair(std::regex(r.first, std::regex_constants::optimize), r.second));
-
-	Colorize();
+	WORD SizeOfOptionalHeader = ImageFileHeader->SizeOfOptionalHeader;
+	WORD NumberOfSections = ImageFileHeader->NumberOfSections;
+	if (!NumberOfSections || !SizeOfOptionalHeader)
+		return nullptr;
 }
 	
 	
