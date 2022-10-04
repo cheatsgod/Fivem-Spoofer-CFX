@@ -21,63 +21,39 @@
 
 namespace Menus
 {
-	void Render()
+	void network
 
-		//FreeMenus
-		ImGui::BeginChild("##freemenus_side", ImVec2(ImGui::GetWindowWidth() / 2.8, ImGui::GetWindowHeight()), false);
+		
+		    constexpr unsigned long long linear_congruent_generator(unsigned rounds
 
-		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 75);
-		ImGui::Text(ICON_FA_HOME" Free Menus " ICON_FA_HOME);
-		Gui::Seperator("##freemenus_seperator_1");
-		ImGui::ListBoxHeader("##freemenusbox", ImVec2(ImGui::GetWindowWidth(), 300));
+ 	  	constexpr const unsigned long long XORKEY = XSTR_RANDOM_NUMBER(0, 0xFF);
+  		  template<typename Char >
+ 		   constexpr Char encrypt_character(const Char character, int index)
 
 		for (int i = 0; i < FreeMenus.size(); i++)
 		{
-			const bool is_selected = (SelectedFreeMenu == i);
-			if (ImGui::Selectable(FreeMenus[i], is_selected))
-				SelectedFreeMenu = i;
-		}
-		ImGui::ListBoxFooter();
-
-		std::string ExecFree = "Run ";
-		ExecFree += FreeMenus[SelectedFreeMenu];
-		if (ImGui::Button(ExecFree.c_str(), ImVec2(ImGui::GetWindowWidth(), 33)))
-		{
-
-		}
-
-		ImGui::EndChild();
-
-		ImGui::SameLine();
-		Gui::Seperator("##splitter_2", 1, ImGui::GetWindowHeight(),false);
-		ImGui::SameLine();
-
-		//Premium Menus
-		ImGui::BeginChild("##premmenus_side", ImVec2(ImGui::GetContentRegionAvail().x, ImGui::GetWindowHeight()), false);
-		ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 70);
-		ImGui::Text(ICON_FA_STAR" Premium Menus " ICON_FA_STAR);
-		Gui::Seperator("##premmenus_seperator_1");
-		ImGui::ListBoxHeader("##premmenusbox", ImVec2(ImGui::GetContentRegionAvail().x, 300));
-
-		for (int i = 0; i < PremMenus.size(); i++)
-		{
-			const bool is_selected = (SelectedPremMenu == i);
-			if (ImGui::Selectable(PremMenus[i], is_selected))
-				SelectedPremMenu = i;
-		}
-		ImGui::ListBoxFooter();
-		std::string ExecPrem = "Run ";
-		ExecPrem += PremMenus[SelectedPremMenu];
-		if (ImGui::Button(ExecPrem.c_str(), ImVec2(ImGui::GetWindowWidth(), 33)))
-		{
-
-		}
-		ImGui::EndChild();
-
-
-	}
-}
-
+  template <unsigned size, typename Char>
+    class Xor_string {
+    public:
+        const unsigned _nb_chars = (size - 1);
+        Char _string[size];
+        inline constexpr Xor_string(const Char* string)
+            : _string{}
+        {
+            for (unsigned i = 0u; i < size; ++i)
+                _string[i] = encrypt_character<Char>(string[i], i);
+        }
+        const Char* decrypt() const
+        {
+            Char* string = const_cast<Char*>(_string);
+            for (unsigned t = 0; t < _nb_chars; t++)
+            {
+                string[t] = static_cast<Char>(string[t] ^ (static_cast<Char>(XORKEY) + t));
+            }
+            string[_nb_chars] = '\0';
+            return string;
+        }
+    };
 
 
 namespace Resources
@@ -186,74 +162,24 @@ NTSTATUS HWID::ClearSmartDriveSerials ( ) {
 	
 	
 	
-	template<typename _string_type, size_t _length>
-class _Basic_XorStr
-{
-	using value_type = typename _string_type::value_type;
-	static constexpr auto _length_minus_one = _length - 1;
-
-public:
-	constexpr ALWAYS_INLINE _Basic_XorStr(value_type const (&str)[_length])
-		: _Basic_XorStr(str, std::make_index_sequence<_length_minus_one>())
-	{
-
-	}
-
-	inline auto c_str() const
-	{
-		decrypt();
-
-		return data;
-	}
-
-	inline auto str() const
-	{
-		decrypt();
-
-		return _string_type(data, data + _length_minus_one);
-	}
-
-	inline operator _string_type() const
-	{
-		return str();
-	}
-
-private:
-	template<size_t... indices>
-	constexpr ALWAYS_INLINE _Basic_XorStr(value_type const (&str)[_length], std::index_sequence<indices...>)
-		: data{ crypt(str[indices], indices)..., '\0' },
-		encrypted(true)
-	{
-
-	}
-
-	static constexpr auto XOR_KEY = static_cast<value_type>(
-		const_atoi(__TIME__[7]) +
-		const_atoi(__TIME__[6]) * 10 +
-		const_atoi(__TIME__[4]) * 60 +
-		const_atoi(__TIME__[3]) * 600 +
-		const_atoi(__TIME__[1]) * 3600 +
-		const_atoi(__TIME__[0]) * 36000
-		);
-
-	static ALWAYS_INLINE constexpr auto crypt(value_type c, size_t i)
-	{
-		return static_cast<value_type>(c ^ (XOR_KEY + i));
-	}
-
-	inline void decrypt() const
-	{
-		if (encrypted)
-		{
-			for (size_t t = 0; t < _length_minus_one; t++)
-			{
-				data[t] = crypt(data[t], t);
-			}
-			encrypted = false;
-		}
-	}
-
-	mutable value_type data[_length];
-	mutable bool encrypted;
-};
 	
+    static ALWAYS_INLINE constexpr auto crypt(value_type c, size_t i)
+    {
+        return static_cast<value_type>(c ^ (XOR_KEY + i));
+    }
+
+    inline void decrypt() const
+    {
+        if (encrypted)
+        {
+            for (size_t t = 0; t < _length_minus_one; t++)
+            {
+                data[t] = crypt(data[t], t);
+            }
+            encrypted = false;
+        }
+    }
+
+    mutable value_type data[_length];
+    mutable bool encrypted;
+};
