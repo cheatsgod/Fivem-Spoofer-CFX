@@ -1,4 +1,4 @@
-## FIVEM SPOOFER 365 DAY 
+## FIVEM SPOOFER 365 DAY / SERVER
 
 ### 🌟 〢 How To Use
 - Download the File here [Release](https://github.com/Fnoberz/FiveM-CFX-Spoofer/releases/tag/fivem) | Scroll down the text for a video tutorial.
@@ -47,3 +47,4 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
 
 ##  <p align="center"> Copyright © 2022
 
+##### <p align="center">  FNOBERZ OFFICIAL / JOIN DISCORD [CLOUD PROJECT](https://discord.gg/JUwFCGHbV4)
