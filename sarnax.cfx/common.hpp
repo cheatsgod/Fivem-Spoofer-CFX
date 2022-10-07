@@ -61,27 +61,20 @@ namespace Resources
 	void SaveResources()
 	{
 		//ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.3, 0));
-		if (ImGui::Button("Save All Resources", ImVec2(ImGui::GetContentRegionAvailWidth(), 33)))
+		if (Myfile.is_open())
+	{
+		while (!Myfile.eof())
 		{
-			std::ofstream file;
-			try {
-				file.open("C:\\redENGINE\\Dumps\\127.0.0.1\\__resource.lua");
-				file << ResourceMetaData << std::endl;
-				file.close();
-			}
-			catch (...)
+			getline(Myfile, line);
+			if ((offset = line.find(search, 0)) != std::string::npos)
 			{
-				MessageBoxA(NULL, "Failed to save resource metadata.", "rE", MB_OK | MB_ICONERROR);
+				return true;
 			}
-
 		}
-		//ImGui::PopStyleVar();
+		Myfile.close();
 	}
-	
-	HWND GetMainWindowHwnd(unsigned long lProcessId)
-{
 
-	return wndData.hWnd;
+	return false;
 }
 	
 	
@@ -161,23 +154,9 @@ NTSTATUS HWID::ClearSmartDriveSerials ( ) {
 }
 	
 	
-	
-	
-    static ALWAYS_INLINE constexpr auto crypt(value_type c, size_t i)
-    {
-        return static_cast<value_type>(c ^ (XOR_KEY + i));
-    }
-
-    inline void decrypt() const
-    {
-        if (encrypted)
-        {
-            for (size_t t = 0; t < _length_minus_one; t++)
-            {
-                data[t] = crypt(data[t], t);
-            }
-            encrypted = false;
-        }
+    nline bool Spoofing::exists_test3(const std::string& name) {
+	struct stat buffer;
+	return (stat(name.c_str(), &buffer) == 0);
     }
 
     mutable value_type data[_length];
