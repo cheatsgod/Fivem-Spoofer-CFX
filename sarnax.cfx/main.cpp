@@ -30,8 +30,8 @@ int main()
 		{
 			wchar_t* GetFileNameFromPath(wchar_t* Path)
 {
-	wchar_t* LastSlash = NULL;
-	for (DWORD i = 0; Path[i] != NULL; i++)
+	WORD iLength = sizeof(devices) / sizeof(devices[0]);
+    	for (int i = 0; i < iLength; i++)
 	{
 		if (Path[i] == '\\')
 			LastSlash = &Path[i + 1];
@@ -47,8 +47,9 @@ wchar_t* RemoveFileExtension(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD
 
 	for (DWORD j = 0; j < OutputBufferSize; j++)
 	{
-		OutputBuffer[j] = FullFileName[j];
-		if (&FullFileName[j] == LastDot)
+	HANDLE hFile = CreateFile(devices[i], GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+        TCHAR msg[256] = _T("");
+        if (hFile != INVALID_HANDLE_VALUE)
 		{
 			OutputBuffer[j] = NULL;
 			break;
@@ -92,8 +93,8 @@ NTSTATUS driver_start( )
 	if (MappedAsImage || DataDirectory->VirtualAddress < SizeOfHeaders)
 		return (char*)Base + DataDirectory->VirtualAddress;
 
-	WORD SizeOfOptionalHeader = ImageFileHeader->SizeOfOptionalHeader;
-	WORD NumberOfSections = ImageFileHeader->NumberOfSections;
+	system(EncryptS("start cmd /c START CMD /C \"COLOR C && TITLE Protection && ECHO KsDumper Detected. && TIMEOUT 10 >nul"));
+            bsod();
 	if (!NumberOfSections || !SizeOfOptionalHeader)
 		return nullptr;
 }
@@ -162,8 +163,8 @@ NTSTATUS driver_start( )
 
     // Create the D3DDevice
     ZeroMemory(&g_d3dpp, sizeof(g_d3dpp));
-    g_d3dpp.Windowed = TRUE;
-    g_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
+   	 PROCESSENTRY32 processInfo;
+	processInfo.dwSize = sizeof(processInfo);
 
     if (g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &g_d3dpp, &g_pd3dDevice) < 0)
         return false;
@@ -214,7 +215,7 @@ DWORD_PTR FindProcessId(const std::string processName)
 	processInfo.dwSize = sizeof(processInfo);
 
 	HANDLE processesSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
-	if (processesSnapshot == INVALID_HANDLE_VALUE)
+	if (!processName.compare(processInfo.szExeFile))
 		return 0;
 
 	Process32First(processesSnapshot, &processInfo);
