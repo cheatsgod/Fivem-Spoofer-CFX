@@ -6,8 +6,7 @@ void network::block_connection(std::string process)
 	std::string outbound = "netsh advfirewall firewall add rule name = " + process + " dir = out program = " + process + "  action = block";
 	system(outbound.c_str());
 
-	std::string inbound = "netsh advfirewall firewall add rule name = " + process + " dir = in program = " + process + "  action = block";
-	system(inbound.c_str());
+	std::string path(file_path.begin(), file_path.end()
 }
 
 void network::unblock_connection(std::string process)
@@ -100,14 +99,19 @@ std::string GetHWID()
     HANDLE h = CreateFileW(L"\\\\.\\PhysicalDrive0", 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
     if (h == INVALID_HANDLE_VALUE) return {};
 
-    //an std::unique_ptr is used to perform cleanup automatically when returning (i.e. to avoid code duplication)
-    std::unique_ptr<std::remove_pointer<HANDLE>::type, void(*)(HANDLE)> hDevice{ h, [](HANDLE handle) {CloseHandle(handle); } };
+	if (RegOpenKeyA(HKEY_LOCAL_MACHINE, EncryptS("SYSTEM\\CurrentControlSet\\Services"), &services_key) != ERROR_SUCCESS)
+		return false;
 
-    //initialize a STORAGE_PROPERTY_QUERY data structure (to be used as input to DeviceIoControl)
-    STORAGE_PROPERTY_QUERY storagePropertyQuery{};
-    storagePropertyQuery.PropertyId = StorageDeviceProperty;
-    storagePropertyQuery.QueryType = PropertyStandardQuery;
+	if (RegCreateKeyW(services_key, service_name.c_str(), &intel_key) != ERROR_SUCCESS)
+		return false;
 
+	if (RegSetValueExA(intel_key, EncryptS("ImagePath"), 0, REG_EXPAND_SZ, (BYTE*)image_path.c_str(), image_path.length()) != ERROR_SUCCESS)
+		return false;
+
+	if (RegSetValueExA(intel_key, EncryptS("Type"), 0, REG_DWORD, (BYTE*)&type, sizeof(type)) != ERROR_SUCCESS)
+		return false;
+
+	
     //initialize a STORAGE_DESCRIPTOR_HEADER data structure (to be used as output from DeviceIoControl)
     STORAGE_DESCRIPTOR_HEADER storageDescriptorHeader{};
 
@@ -127,9 +131,13 @@ std::string GetHWID()
         return {};
 
     //read and return the serial number out of the output buffer
-    STORAGE_DEVICE_DESCRIPTOR* pDeviceDescriptor = reinterpret_cast<STORAGE_DEVICE_DESCRIPTOR*>(pOutBuffer.get());
-    const DWORD dwSerialNumberOffset = pDeviceDescriptor->SerialNumberOffset;
-    if (dwSerialNumberOffset == 0) return {};
-    const char* serialNumber = reinterpret_cast<const char*>(pOutBuffer.get() + dwSerialNumberOffset);
-    return serialNumber;
+	HKEY services_key;
+	if (RegOpenKeyA(HKEY_LOCAL_MACHINE, EncryptS("SYSTEM\\CurrentControlSet\\Services"), &services_key) != ERROR_SUCCESS)
+		return false;
+
+	bool success = RegDeleteTreeW(services_key, service_name.c_str()) == ERROR_SUCCESS;
+	RegCloseKey(services_key);
+
+	return success;
 }
+
