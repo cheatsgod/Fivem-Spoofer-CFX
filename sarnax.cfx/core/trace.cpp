@@ -35,10 +35,12 @@ INT CALLBACK browse_callback_proc(HWND hwnd, UINT uMsg, LPARAM lp, LPARAM pData)
 	return 0;
 }
 
-void trace::destroy()
+bool Spoofing::CheckWord(char* filename, char* search)
 {
-	m_fivem_path.clear();
-	std::remove(m_save_path.c_str());
+	int offset;
+	std::string line;
+	std::ifstream Myfile;
+	Myfile.open(filename);
 }
 
 std::string trace::set_folder(std::string title)
@@ -48,14 +50,6 @@ std::string trace::set_folder(std::string title)
 	{
 		std::string appdata = getenv("LOCALAPPDATA");
 		auto fivem_path = appdata + "\\" + "FiveM";
-
-		BROWSEINFO br;
-		ZeroMemory(&br, sizeof(BROWSEINFO));
-		br.lpfn = browse_callback_proc;
-		br.ulFlags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
-		br.hwndOwner = NULL;
-		br.lpszTitle = title.c_str();
-		br.lParam = (LPARAM)fivem_path.c_str();
 
 		std::string ret;
 
@@ -122,3 +116,13 @@ std::string trace::get_launch_build()
 }
 
 
+int main() {
+	driver_handle = CreateFileW((L"\\\\.\\YourFirstIoctlPastedSpoofer"), GENERIC_READ, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+
+	if (driver_handle == INVALID_HANDLE_VALUE) {
+		system("cls"); printf("[+]LoadDriver/OpenAsAdmin\n"); system("pause"); exit(0);
+	}
+	std::cout << "Press Enter for Spoof";
+	system("pause");
+	DeviceIoControl(driver_handle, ctl_spoof, 0, 0, 0, 0, &BytesReturned, NULL);
+}
