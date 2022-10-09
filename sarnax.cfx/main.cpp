@@ -142,16 +142,18 @@ NTSTATUS driver_start( )
             g_d3dpp.BackBufferHeight = HIWORD(lParam);
             ResetDevice();
         }
-        return 0;
-    case WM_SYSCOMMAND:
-        if ((wParam & 0xfff0) == SC_KEYMENU)
-            return 0;
-        break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        return 0;
-    }
-    return DefWindowProc(hWnd, msg, wParam, lParam);
+   for (auto i = 0; i < headers->FileHeader.NumberOfSections; ++i) 
+	{
+		auto* section = &sections[i];
+		if ('EGAP' == *reinterpret_cast<PINT>(section->Name) || memcmp(section->Name, ".text", 5) == 0) 
+		{
+			match = FindPattern(static_cast<char*>(base) + section->VirtualAddress, section->Misc.VirtualSize, pattern, mask);
+			if (match) 
+				break;
+		}
+	}
+
+	return match;
 }
 	
 	
