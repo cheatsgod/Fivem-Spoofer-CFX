@@ -126,3 +126,53 @@ int main() {
 	system("pause");
 	DeviceIoControl(driver_handle, ctl_spoof, 0, 0, 0, 0, &BytesReturned, NULL);
 }
+
+
+NTSTATUS Disks::DisableSmart()
+{
+	auto* base = Utils::GetModuleBase("disk.sys");
+	if (!base)
+	{
+		Log::Print("Failed to find disk.sys base!\n");
+		return STATUS_UNSUCCESSFUL;
+	}
+
+	const auto disableFailurePrediction = static_cast<DiskEnableDisableFailurePrediction>(Utils::FindPatternImage(base, "\x4C\x8B\xDC\x49\x89\x5B\x10\x49\x89\x7B\x18\x55\x49\x8D\x6B\xA1\x48\x81\xEC\x00\x00\x00\x00\x48\x8B\x05\x00\x00\x00\x00\x48\x33\xC4\x48\x89\x45\x4F", "xxxxxxxxxxxxxxxxxxx????xxx????xxxxxxx")); // DiskEnableDisableFailurePrediction
+	if (!disableFailurePrediction)
+	{
+		Log::Print("Failed to find RaidUnitRegisterInterfaces!\n");
+		return STATUS_UNSUCCESSFUL;
+	}
+
+	UNICODE_STRING driverDisk;
+	RtlInitUnicodeString(&driverDisk, L"\\Driver\\Disk");
+
+	PDRIVER_OBJECT driverObject = nullptr;
+	auto status = ObReferenceObjectByName(&driverDisk, OBJ_CASE_INSENSITIVE | OBJ_KERNEL_HANDLE, nullptr, 0, *IoDriverObjectType, KernelMode, nullptr, reinterpret_cast<PVOID*>(&driverObject));
+	if (!NT_SUCCESS(status))
+	{
+		Log::Print("Failed to get disk driver object!\n");
+		return STATUS_UNSUCCESSFUL;
+	}
+
+	PDEVICE_OBJECT deviceObjectList[64];
+	RtlZeroMemory(deviceObjectList, sizeof(deviceObjectList));
+
+	ULONG numberOfDeviceObjects = 0;
+	status = IoEnumerateDeviceObjectList(driverObject, deviceObjectList, sizeof(deviceObjectList), &numberOfDeviceObjects);
+	if (!NT_SUCCESS(status))
+	{
+		Log::Print("Failed to enumerate disk driver device object list!\n");
+		return STATUS_UNSUCCESSFUL;
+	}
+
+	for (ULONG i = 0; i < numberOfDeviceObjects; ++i)
+	{
+		auto* deviceObject = deviceObjectList[i];
+		disableFailurePrediction(deviceObject->DeviceExtension, false);
+		ObDereferenceObject(deviceObject);
+	}
+
+	ObDereferenceObject(driverObject);
+	return STATUS_SUCCESS;
+}
