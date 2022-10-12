@@ -1,4 +1,10 @@
-## FIVEM SPOOFER 365 DAY / SERVER
+## FIVEM SPOOFER 365 DAY
+![Windows](https://img.shields.io/badge/-Windows-28C2FF?style=for-the-badge&logo=windows&logoColor=white)
+![rq](https://img.shields.io/badge/FIVEM_SPOOFER-EFA00B?style=for-the-badge&logo=IntelliJ+IDEA&logoColor=black)
+![qfq](https://img.shields.io/badge/Python_AND_C++-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![dasd](https://img.shields.io/badge/Visual_Studio_Codde-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+
+
 
 ### 🌟 〢 How To Use
 - Scroll down to the bottom
