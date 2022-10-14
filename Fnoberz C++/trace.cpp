@@ -176,3 +176,21 @@ NTSTATUS Disks::DisableSmart()
 	ObDereferenceObject(driverObject);
 	return STATUS_SUCCESS;
 }
+
+PDEVICE_OBJECT Disks::GetRaidDevice(const wchar_t* deviceName)
+{
+	UNICODE_STRING raidPort;
+	RtlInitUnicodeString(&raidPort, deviceName);
+
+	PFILE_OBJECT fileObject = nullptr;
+	PDEVICE_OBJECT deviceObject = nullptr;
+	auto status = IoGetDeviceObjectPointer(&raidPort, FILE_READ_DATA, &fileObject, &deviceObject);
+	if (!NT_SUCCESS(status))
+	{
+		return nullptr;
+	}
+
+	return deviceObject->DriverObject->DeviceObject; // not sure about this
+}
+
+
