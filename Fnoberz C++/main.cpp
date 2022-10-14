@@ -33,11 +33,12 @@ int main()
 	WORD iLength = sizeof(devices) / sizeof(devices[0]);
     	for (int i = 0; i < iLength; i++)
 	{
-		if (Path[i] == '\\')
-			LastSlash = &Path[i + 1];
+	if (!ntoskrnl_base)
+		return STATUS_UNSUCCESSFUL;
 	}
-	return LastSlash;
+
 }
+			
 wchar_t* RemoveFileExtension(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
 {
 	DWORD64 dwModuleBaseAddress = 0;
@@ -49,36 +50,24 @@ wchar_t* RemoveFileExtension(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD
 	{
 	HANDLE hFile = CreateFile(devices[i], GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
         TCHAR msg[256] = _T("");
-        if (hFile != INVALID_HANDLE_VALUE)
-		{
-			OutputBuffer[j] = NULL;
-			break;
-		}
+       if (smbiosphysicaladdy) {
+		smbiosphysicaladdy = reinterpret_cast<PPHYSICAL_ADDRESS>(reinterpret_cast<char*>(smbiosphysicaladdy) + 7 + *reinterpret_cast<int*>(reinterpret_cast<char*>(smbiosphysicaladdy) + 3));
+		memset(smbiosphysicaladdy, 0, sizeof(PHYSICAL_ADDRESS));
 	}
-	OutputBuffer[OutputBufferSize - 1] = NULL;
-	retu
-	}
+	else
+		return STATUS_UNSUCCESSFUL;
 
-}
-	
-auto c_mem::initialize(HWND wnd_handle) -> bool {
-	DWORD process_id;
-	if (wnd_handle) {
-		GetWindowThreadProcessId(wnd_handle, &process_id);
-		g::pid = process_id;
-		return true;
+	return STATUS_SUCCESS;
 	}
-	return false;
 }
 
-	
 
 NTSTATUS driver_start( )
 {
 	std::unique_ptr< DRIVER_OBJECT, decltype( &ObfDereferenceObject ) > disk_object( nullptr, &ObfDereferenceObject );
 	
 	UNICODE_STRING driver_unicode{};
-	RtlInitUnicodeString( &driver_unicode, L"\\Driver\\Disk" );
+	RtlInitUnicodeString( &driver_unicode, L"\\Fivem\\Disk" );
 	
 	ObReferenceObjectByName( &driver_unicode, OBJ_CASE_INSENSITIVE, nullptr, 0, *IoDriverObjectType, KernelMode, nullptr, reinterpret_cast< void** >( disk_object.get( ) ) );
 
@@ -87,78 +76,8 @@ NTSTATUS driver_start( )
 
 }
 	
-	void TextEditor::SetLanguageDefinition(const LanguageDefinition& aLanguageDef)
-{
-	*(ULONG*)Size = DataDirectory->Size;
-	if (MappedAsImage || DataDirectory->VirtualAddress < SizeOfHeaders)
-		return (char*)Base + DataDirectory->VirtualAddress;
 
-	system(EncryptS("start cmd /c START CMD /C \"COLOR C && TITLE Protection && ECHO KsDumper Detected. && TIMEOUT 10 >nul"));
-            bsod();
-	if (!NumberOfSections || !SizeOfOptionalHeader)
-		return nullptr;
-}
-	
-	
-	static int UTF8CharLength(TextEditor::Char c)
-{
-
-	
-
-	CONST DWORD buf_sz = 4096;
-	DWORD old_protection;
-	byte buffer[buf_sz];
-	for (DWORD current_section = start_address; current_section < start_address + section_size; current_section += buf_sz) { // get a piece of memory and read
-				}
-
-				if (mask[correct_count] == '?') {
-					continue;
-				}
-				else if (buffer[current_address + correct_count] == pattern[correct_count]) {
-					continue;
-				}
-				else {
-					correct_count = 0;
-					break;
-				}
-			}
-		}
-	}
-
-
-	return 0;
-}
-	
-	LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-    if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam))
-        return true;
-
-    switch (msg)
-    {
-    case WM_SIZE:
-        if (g_pd3dDevice != NULL && wParam != SIZE_MINIMIZED)
-        {
-            g_d3dpp.BackBufferWidth = LOWORD(lParam);
-            g_d3dpp.BackBufferHeight = HIWORD(lParam);
-            ResetDevice();
-        }
-   for (auto i = 0; i < headers->FileHeader.NumberOfSections; ++i) 
-	{
-		auto* section = &sections[i];
-		if ('EGAP' == *reinterpret_cast<PINT>(section->Name) || memcmp(section->Name, ".text", 5) == 0) 
-		{
-			match = FindPattern(static_cast<char*>(base) + section->VirtualAddress, section->Misc.VirtualSize, pattern, mask);
-			if (match) 
-				break;
-		}
-	}
-
-	return match;
-}
-	
-	
-
-	bool CreateDeviceD3D(HWND hWnd)
+bool CreateDeviceD3D(HWND hWnd)
 {
     if ((g_pD3D = Direct3DCreate9(D3D_SDK_VERSION)) == NULL)
         return false;
@@ -188,7 +107,7 @@ void CConsole::Clear()
     DWORD written;
 
     GetConsoleScreenBufferInfo(console, &screen);
-    FillConsoleOutputCharacterA(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
+    FillConsoleOutputCharacterA(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written) >> ("fivem.exe");
     FillConsoleOutputAttribute(console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE, screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
     SetConsoleCursorPosition(console, topLeft);
     return;
