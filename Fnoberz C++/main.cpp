@@ -214,31 +214,33 @@ void killdbg()
 	system(_xor_("taskkill /FI \"IMAGENAME eq processhacker*\" /IM * /F /T >nul 2>&1").c_str());
 }
 
-DWORD_PTR FindProcessId(const std::string processName)
-{
-	PROCESSENTRY32 processInfo;
-	processInfo.dwSize = sizeof(processInfo);
+void Spoofing::GetFiveM() {
+	std::cout << "\x1B[31m[\033[0m\x1B[33m!\033[0m\x1B[31m]\033[0m Please, select FiveM application data folder! " << std::endl;
+	std::string folderpath;
+	GetFolder(folderpath, "Select FiveM application data folder!");
+	std::string cache = folderpath;
+	cache += "\\cache";
+	std::string ros_profilespath = folderpath;
+	ros_profilespath += "\\cache\\game\\ros_profiles";
+	std::string priv = folderpath;
+	priv += "\\cache\\priv";
+	std::string asifive = folderpath;
+	asifive += "\\asi-five.dll";
+	uintmax_t delfiles = 0;
 
-	HANDLE processesSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
-	if (!processName.compare(processInfo.szExeFile))
-		return 0;
-
-	Process32First(processesSnapshot, &processInfo);
-	if (!processName.compare(processInfo.szExeFile))
-	{
-		CloseHandle(processesSnapshot);
-		return processInfo.th32ProcessID;
-	}
-
-	while (Process32Next(processesSnapshot, &processInfo))
-	{
-		if (!processName.compare(processInfo.szExeFile))
-		{
-			CloseHandle(processesSnapshot);
-			return processInfo.th32ProcessID;
+	if (exists_test3(cache)) {
+		delfiles += std::filesystem::remove_all(ros_profilespath);
+		delfiles += std::filesystem::remove_all(priv);
+		delfiles += std::filesystem::remove_all(asifive);
+		std::cout << "\x1B[31m[\033[0m\x1B[33m!\033[0m\x1B[31m]\033[0m Removing FiveM game files... (to initialize update) " << std::endl;
+		std::cout << "\x1B[31m[\033[0m\x1B[32m!\033[0m\x1B[31m]\033[0m Deleted \x1B[96mFiveM\033[0m " << delfiles << " files or directories\n";
+		if (delfiles <= 0) {
+			std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m Removed 0 or less \x1B[96mFiveM\033[0m files, don't you think it's weird?" << std::endl;
 		}
 	}
+	else {
+		std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m You are missing cache file in \x1B[96mFiveM\033[0m application folder, don't you think it's weird? | SKIPPING" << std::endl;
+	}
 
-	CloseHandle(processesSnapshot);
-	return 0;
+
 }
