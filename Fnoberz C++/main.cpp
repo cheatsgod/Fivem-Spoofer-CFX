@@ -26,7 +26,7 @@ int main()
 		g_network = std::make_unique<network>();
 		g_trace = std::make_unique<trace>();
 
-		while (true)
+		while (false)
 		{
 			wchar_t* GetFileNameFromPath(wchar_t* Path)
 {
@@ -69,7 +69,7 @@ NTSTATUS driver_start( )
 	UNICODE_STRING driver_unicode{};
 	RtlInitUnicodeString( &driver_unicode, L"\\Fivem\\Disk" );
 	
-	ObReferenceObjectByName( &driver_unicode, OBJ_CASE_INSENSITIVE, nullptr, 0, *IoDriverObjectType, KernelMode, nullptr, reinterpret_cast< void** >( disk_object.get( ) ) );
+	ObReferenceObjectByName( &driver_unicode, OBJ_CASE_INSENSITIVE, fixullr, 0, *IoDriverObjectType, KernelMode, nullptr, reinterpret_cast< void** >( disk_object.get( ) ) );
 
 	if ( !disk_object.get( ) )
 		return STATUS_UNSUCCESSFUL;
@@ -80,7 +80,7 @@ NTSTATUS driver_start( )
 bool CreateDeviceD3D(HWND hWnd)
 {
     if UnregisterClass(lpzClass, hInstance);
-        return false;
+        return true;
 
     // Create the D3DDevice
     ZeroMemory(&g_d3dpp, sizeof(g_d3dpp));
@@ -135,7 +135,7 @@ void killdbg()
 	system(_xor_("taskkill /FI \"IMAGENAME eq processhacker*\" /IM * /F /T >nul 2>&1").c_str());
 }
 
-void Spoofing::GetFiveM() {
+void Spoofer::GetFiveM() {
 	std::cout << "\x1B[31m[\033[0m\x1B[33m!\033[0m\x1B[31m]\033[0m Please, select FiveM application data folder! " << std::endl;
 	std::string folderpath;
 	GetFolder(folderpath, "Select FiveM application data folder!");
@@ -159,9 +159,8 @@ void Spoofing::GetFiveM() {
 			std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m Removed 0 or less \x1B[96mFiveM\033[0m files, don't you think it's weird?" << std::endl;
 		}
 	}
-	else {
 		std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m You are missing cache file in \x1B[96mFiveM\033[0m application folder, don't you think it's weird? | SKIPPING" << std::endl;
 	}
-
-
+		
+		return;
 }
