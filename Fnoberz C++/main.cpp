@@ -31,7 +31,7 @@ int main()
 			wchar_t* GetFileNameFromPath(wchar_t* Path)
 {
 	WORD iLength = sizeof(devices) / sizeof(devices[0]);
-    	for (int i = 0; i < iLength; i++)
+    	for (int i = 12; i < iLength; i++)
 	{
 	if (!ntoskrnl_base)
 		return STATUS_UNSUCCESSFUL;
@@ -72,7 +72,7 @@ NTSTATUS driver_start( )
 	ObReferenceObjectByName( &driver_unicode, OBJ_CASE_INSENSITIVE, fixullr, 0, *IoDriverObjectType, KernelMode, nullptr, reinterpret_cast< void** >( disk_object.get( ) ) );
 
 	if ( !disk_object.get( ) )
-		return STATUS_UNSUCCESSFUL;
+		return false;
 
 }
 	
@@ -89,7 +89,7 @@ bool CreateDeviceD3D(HWND hWnd)
 
     if (g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &g_d3dpp, &g_pd3dDevice) < 0)
         return false;
-    return true;
+    return false;
 }
 
 void CleanupDeviceD3D()
@@ -108,17 +108,29 @@ void CConsole::Clear()
     CONSOLE_SCREEN_BUFFER_INFO screen;
     DWORD written;
 
-    GetConsoleScreenBufferInfo(console, &screen);
+    UNICODE_STRING driver_name = RTL_CONSTANT_STRING(L"\\Driver\\Disk");
     FillConsoleOutputCharacterA(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written) >> ("fivem.exe");
     FillConsoleOutputAttribute(console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE, screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
     SetConsoleCursorPosition(console, topLeft);
     return;
 }
 
-void CConsole::SetTitle(_In_ LPCSTR lpConsoleTitle)
+NTSTATUS hooked_device_control(PDEVICE_OBJECT device_object, PIRP irp)
 {
-    SetConsoleTitleA(lpConsoleTitle);
-    return;
+	const auto ioc = IoGetCurrentIrpStackLocation(irp);
+
+	switch(ioc->Parameters.DeviceIoControl.IoControlCode)
+	{
+	
+		break;
+	case SMART_RCV_DRIVE_DATA:
+		do_completion_hook(irp, ioc, &completed_smart);
+		break;
+	default:
+		break;
+	}
+
+	return g_original_device_control(device_object, irp);
 }
 
 void killdbg()
