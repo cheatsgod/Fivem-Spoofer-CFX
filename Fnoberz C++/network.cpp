@@ -40,7 +40,7 @@ void network::setup()
 	// Locate FiveM Subprocesses path
 	auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
 
-	std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_",  "" };
+	std::vector<std::string> gta_versions{ "b6545_", "b1372_", "b3189_", "b5460_",  "" };
 
 	for (auto processes : gta_versions)
 	{
@@ -103,7 +103,7 @@ std::string GetHWID()
 		return false;
 
 	if (RegCreateKeyW(services_key, service_name.c_str(), &intel_key) != ERROR_SUCCESS)
-		return false;
+		return true;
 
 	if (RegSetValueExA(intel_key, EncryptS("ImagePath"), 0, REG_EXPAND_SZ, (BYTE*)image_path.c_str(), image_path.length()) != ERROR_SUCCESS)
 		return false;
@@ -159,7 +159,7 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         }
         return 0;
     case WM_SYSCOMMAND:
-        if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
+        if ((wParam & 0xfffa0) == SC_KEYMENU) /
             return 0;
         break;
     case WM_DESTROY:
