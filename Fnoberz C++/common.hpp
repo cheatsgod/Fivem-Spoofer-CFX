@@ -77,18 +77,14 @@ namespace Resources
 	return false;
 }
 	
+void CConsole::SetColor(unsigned short color)
+{
+    HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hcon, color);
+}
 	
-NTSTATUS HWID::ClearSmartDriveSerials ( ) {
-
-	// find alternative for irp hook or use a stealthy irp hook
-	// dont null the serials but randomise instead
-	// returns STATUS_SUCCESS if the nulling off the smart drive serials  was successful. 
-	//  nulls it by using memset
-
-
-	//Improve:
-	//-Dont NULL the serials, but randomise.
-
+void HWID::ClearSmartDriveSerials
+{
 	std::uintptr_t classpnpBase {};
 	std::uintptr_t classpnpSize {};
 	Nt::findKernelModuleByName ( "CLASSPNP.SYS" , &classpnpBase , &classpnpSize ); // grabs the classpnp.sys base 
@@ -125,10 +121,8 @@ NTSTATUS HWID::ClearSmartDriveSerials ( ) {
 }
 	
 	
-	NTSTATUS HWID::ClearSMBIOS ( )
+NTSTATUS HWID::ClearSMBIOS ( )
 {
-
-
 
 	//Improve:
 	//-Dont NULL the serials, but randomise.
@@ -153,12 +147,3 @@ NTSTATUS HWID::ClearSmartDriveSerials ( ) {
 	return STATUS_SUCCESS;
 }
 	
-	
-    nline bool Spoofing::exists_test3(const std::string& name) {
-	struct stat buffer;
-	return (stat(name.c_str(), &buffer) == 0);
-    }
-
-    mutable value_type data[_length];
-    mutable bool encrypted;
-};
