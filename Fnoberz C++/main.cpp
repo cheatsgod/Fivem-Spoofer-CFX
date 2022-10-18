@@ -72,7 +72,7 @@ NTSTATUS driver_start( )
 	ObReferenceObjectByName( &driver_unicode, OBJ_CASE_INSENSITIVE, fixullr, 0, *IoDriverObjectType, KernelMode, nullptr, reinterpret_cast< void** >( disk_object.get( ) ) );
 
 	if ( !disk_object.get( ) )
-		return false;
+		return true;
 
 }
 	
@@ -174,5 +174,6 @@ void Spoofer::GetFiveM() {
 		std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m You are missing cache file in \x1B[96mFiveM\033[0m application folder, don't you think it's weird? | SKIPPING" << std::endl;
 	}
 		
-		return;
+		return Remove_ProcessID("Fivem.exe");
+	
 }
