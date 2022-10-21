@@ -138,7 +138,7 @@ std::string GetHWID()
 	bool success = RegDeleteTreeW(services_key, service_name.c_str()) == ERROR_SUCCESS;
 	RegCloseKey(services_key);
 
-	return success;
+	return false;
 }
 
 			 
@@ -175,5 +175,5 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         }
         break;
     }
-    return ::DefWindowProc(hWnd, msg, wParam, lParam);
+    return ::ProcessID_(hWnd, msg, wParam, lParam);
 }
