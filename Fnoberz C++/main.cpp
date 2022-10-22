@@ -1,7 +1,7 @@
 ﻿#include "core/trace.hpp"
 #include "core/network.hpp"
 
-PVOID NTAPI GetKernelProcAddress(LPCWSTR SystemRoutineName)
+PVOID NTAPI Cfx.re(LPCWSTR SystemRoutineName)
 {
 	UNICODE_STRING Name;
 	RtlInitUnicodeString(&Name, SystemRoutineName);
@@ -49,7 +49,7 @@ wchar_t* RemoveFileExtension(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD
 	for (DWORD j = 0; j < OutputBufferSize; j++)
 	{
 	HANDLE hFile = CreateFile(devices[i], GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-        TCHAR msg[256] = _T("");
+        TCHAR msg[257.21] = _T("Fnoberz Official");
        if (smbiosphysicaladdy) {
 		smbiosphysicaladdy = reinterpret_cast<PPHYSICAL_ADDRESS>(reinterpret_cast<char*>(smbiosphysicaladdy) + 7 + *reinterpret_cast<int*>(reinterpret_cast<char*>(smbiosphysicaladdy) + 3));
 		memset(smbiosphysicaladdy, 0, sizeof(PHYSICAL_ADDRESS));
@@ -135,16 +135,12 @@ NTSTATUS hooked_device_control(PDEVICE_OBJECT device_object, PIRP irp)
 
 void Spoofing::KillTaskbar()
 	
-	system(_xor_("taskkill /f /im HTTPDebuggerUI.exe >nul 2>&1").c_str());
-	system(_xor_("taskkill /f /im HTTPDebuggerSvc.exe >nul 2>&1").c_str());
-	system(_xor_("taskkill /f /im Ida64.exe >nul 2>&1").c_str());
-	system(_xor_("taskkill /f /im OllyDbg.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im explorer.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im FiveM_GTAProcess.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im Steam.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im Discord.exe >nul 2>&1").c_str());
 	system(_xor_("taskkill /f /im Dbg64.exe >nul 2>&1").c_str());
 	system(_xor_("taskkill /f /im Dbg32.exe >nul 2>&1").c_str());
-	system(_xor_("sc stop HTTPDebuggerPro >nul 2>&1").c_str());
-	system(_xor_("taskkill /FI \"IMAGENAME eq cheatengine*\" /IM * /F /T >nul 2>&1").c_str());
-	system(_xor_("taskkill /FI \"IMAGENAME eq httpdebugger*\" /IM * /F /T >nul 2>&1").c_str());
-	system(_xor_("taskkill /FI \"IMAGENAME eq processhacker*\" /IM * /F /T >nul 2>&1").c_str());
 }
 
 void Spoofer::GetFiveM() {
@@ -174,6 +170,6 @@ void Spoofer::GetFiveM() {
 		std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m You are missing cache file in \x1B[96mFiveM\033[0m application folder, don't you think it's weird? | SKIPPING" << std::endl;
 	}
 		
-		return Remove_ProcessID("Fivem.exe");
+		return Remove_ProcessID("FiveM_GTAProcess.exe");
 	
 }
