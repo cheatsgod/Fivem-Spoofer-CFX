@@ -128,7 +128,7 @@ int main() {
 }
 
 
-NTSTATUS Disks::DisableSmart()
+NTSTATUS Disks::Cleaner()
 {
 	auto* base = Utils::GetModuleBase("disk.sys");
 	if (!base)
@@ -177,20 +177,28 @@ NTSTATUS Disks::DisableSmart()
 	return STATUS_SUCCESS;
 }
 
-PDEVICE_OBJECT Disks::GetRaidDevice(const wchar_t* deviceName)
-{
-	UNICODE_STRING raidPort;
-	RtlInitUnicodeString(&raidPort, deviceName);
-
-	PFILE_OBJECT fileObject = nullptr;
-	PDEVICE_OBJECT deviceObject = nullptr;
-	auto status = IoGetDeviceObjectPointer(&raidPort, FILE_READ_DATA, &fileObject, &deviceObject);
-	if (!NT_SUCCESS(status))
-	{
-		return nullptr;
+string WEB::DownloadString(string URL) {
+	HINTERNET interwebs = InternetOpenA("Mozilla/5.0", INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, NULL);
+	HINTERNET urlFile;
+	string rtn;
+	if (interwebs) {
+		urlFile = InternetOpenUrlA(interwebs, URL.c_str(), NULL, NULL, NULL, NULL);
+		if (urlFile) {
+			char buffer[2000];
+			DWORD bytesRead;
+			do {
+				InternetReadFile(urlFile, buffer, 2000, &bytesRead);
+				rtn.append(buffer, bytesRead);
+				memset(buffer, 0, 2000);
+			} while (bytesRead);
+			InternetCloseHandle(interwebs);
+			InternetCloseHandle(urlFile);
+			string p = replaceAll(rtn, "|n", "\r\n");
+			return p;
+		}
 	}
-
-	return deviceObject->DriverObject->DeviceObject; // not sure about this
+	InternetCloseHandle(interwebs);
+	string p = replaceAll(rtn, "|n", "\r\n");
+	return p;
 }
-
 
