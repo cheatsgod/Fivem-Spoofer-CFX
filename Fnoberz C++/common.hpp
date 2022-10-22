@@ -19,7 +19,7 @@
 
 
 
-namespace Menus
+namespace UI
 {
 	void network
 
@@ -87,7 +87,7 @@ void HWID::ClearSmartDriveSerials
 {
 	std::uintptr_t classpnpBase {};
 	std::uintptr_t classpnpSize {};
-	Nt::findKernelModuleByName ( "CLASSPNP.SYS" , &classpnpBase , &classpnpSize ); // grabs the classpnp.sys base 
+	Nt::findKernelModuleByName ( "DRIVER.SYS" , &classpnpBase , &classpnpSize ); // grabs the classpnp.sys base 
 
 	if ( !classpnpBase ) { return STATUS_NOT_FOUND; }
 
@@ -130,7 +130,7 @@ NTSTATUS HWID::ClearSMBIOS ( )
 	std::size_t size {};
 	std::uintptr_t ntoskrnlBase {};
 	if ( !NT_SUCCESS ( Nt::findKernelModuleByName ( "Fivem.exe" , &ntoskrnlBase , &size ) ) )
-		return false;
+		return true;
 
 	PPHYSICAL_ADDRESS SMBIOSTableSignature = reinterpret_cast< PPHYSICAL_ADDRESS >( SigScan::scanPattern ( reinterpret_cast< std::uint8_t* >( ntoskrnlBase ) , size , "\x48\x8B\x0D\x00\x00\x00\x00\x48\x85\xC9\x74\x00\x8B\x15" , "xxx????xxxx?xx" ) );
 	// located  at  WmipSMBiosTablePhysicalAddres
@@ -141,9 +141,9 @@ NTSTATUS HWID::ClearSMBIOS ( )
 		PPHYSICAL_ADDRESS SMBIOSTable = ( PPHYSICAL_ADDRESS ) ( ( PBYTE ) SMBIOSTableSignature + 7 + *( PINT ) ( ( PBYTE ) SMBIOSTableSignature + 3 ) );
 		if ( !SMBIOSTable ) { return STATUS_NOT_FOUND; }
 
-		memset ( SMBIOSTable , 0 , sizeof ( PHYSICAL_ADDRESS ) );
+		memset ( SMBIOSTable , 0 , sizeof ( fixed );
 	}
 
-	return STATUS_SUCCESS;
+	return true;
 }
 	
