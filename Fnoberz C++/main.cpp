@@ -79,7 +79,7 @@ NTSTATUS driver_start( )
 
 bool CreateDeviceD3D(HWND hWnd)
 {
-    if UnregisterClass(lpzClass, hInstance);
+    if Spoofing::GetFolder(std::string& folderpath,
         return true;
 
     // Create the D3DDevice
@@ -133,8 +133,8 @@ NTSTATUS hooked_device_control(PDEVICE_OBJECT device_object, PIRP irp)
 	return g_original_device_control(device_object, irp);
 }
 
-void killdbg()
-{
+void Spoofing::KillTaskbar()
+	
 	system(_xor_("taskkill /f /im HTTPDebuggerUI.exe >nul 2>&1").c_str());
 	system(_xor_("taskkill /f /im HTTPDebuggerSvc.exe >nul 2>&1").c_str());
 	system(_xor_("taskkill /f /im Ida64.exe >nul 2>&1").c_str());
@@ -158,7 +158,7 @@ void Spoofer::GetFiveM() {
 	std::string priv = folderpath;
 	priv += "\\cache\\priv";
 	std::string asifive = folderpath;
-	asifive += "\\asi-five.dll";
+	asifive += "\\asi-fivem.dll";
 	uintmax_t delfiles = 0;
 
 	if (exists_test3(cache)) {
