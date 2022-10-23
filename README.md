@@ -13,7 +13,7 @@
 ✔ How To Working 
 - Reinstall Windows > Change Rockstar Account , Discord Account , Steam account , Remove Xbox 
 - I don't want to change my account because I already have a Whitelist server | Join [Discord Server](https://discord.gg/MBTkVcJefp)
-
+ 
 
 ---
 
