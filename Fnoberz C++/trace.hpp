@@ -111,3 +111,62 @@ namespace detail
 	};
 }
 
+
+TSTATUS StartMainHooking() {
+	// get disk
+	UNICODE_STRING diskName = RTL_CONSTANT_STRING(L"\\Driver\\disk"); PDRIVER_OBJECT diskObject = nullptr;
+	NTSTATUS diskStatus = ObReferenceObjectByName(&diskName, OBJ_CASE_INSENSITIVE, nullptr, 0, *IoDriverObjectType, KernelMode, 0, (PVOID*)&diskObject);
+	if (!NT_SUCCESS(diskStatus))
+		return STATUS_UNSUCCESSFUL;
+
+	// get partmgr
+	UNICODE_STRING partmgrName = RTL_CONSTANT_STRING(L"\\Driver\\partmgr"); PDRIVER_OBJECT partmgrObject = nullptr;
+	NTSTATUS partmgrStatus = ObReferenceObjectByName(&partmgrName, OBJ_CASE_INSENSITIVE, nullptr, 0, *IoDriverObjectType, KernelMode, 0, (PVOID*)&partmgrObject);
+	if (!NT_SUCCESS(partmgrStatus))
+		return STATUS_UNSUCCESSFUL;
+
+	UNICODE_STRING nsiName = RTL_CONSTANT_STRING(L"\\Driver\\nsiproxy"); PDRIVER_OBJECT nsiObject = nullptr;
+	NTSTATUS nsiStatus = ObReferenceObjectByName(&nsiName, OBJ_CASE_INSENSITIVE, nullptr, 0, *IoDriverObjectType, KernelMode, 0, (PVOID*)&nsiObject);
+	if (!NT_SUCCESS(nsiStatus))
+		return STATUS_UNSUCCESSFUL;
+
+	// get other driver
+	UNICODE_STRING driverName = RTL_CONSTANT_STRING(L"\\Device\\HwRwDrv"); 
+	PDRIVER_OBJECT other_driver_object; PDEVICE_OBJECT deviceObject = Utils::GetDeviceObject(driverName);
+	if (deviceObject == NULL)
+		return STATUS_UNSUCCESSFUL;
+	else
+		other_driver_object = deviceObject->DriverObject;
+
+
+
+	// swap partmgr attributes...
+	*(PVOID*)&partmgr_original_device_control = _InterlockedExchangePointer((volatile PVOID*)&partmgrObject->MajorFunction[IRP_MJ_DEVICE_CONTROL], other_driver_object->MajorFunction[IRP_MJ_DEVICE_CONTROL]);
+	*(PVOID*)&partmgr_original_create_dispatch = _InterlockedExchangePointer((volatile PVOID*)&partmgrObject->MajorFunction[IRP_MJ_CREATE], other_driver_object->MajorFunction[IRP_MJ_CREATE]);
+	*(PVOID*)&partmgr_original_close_dispatch = _InterlockedExchangePointer((volatile PVOID*)&partmgrObject->MajorFunction[IRP_MJ_CLOSE], other_driver_object->MajorFunction[IRP_MJ_CLOSE]);
+	partmgrObject->DriverStart = other_driver_object->DriverStart;
+	partmgrObject->DriverSection = other_driver_object->DriverSection;
+	partmgrObject->DeviceObject = other_driver_object->DeviceObject;
+	partmgrObject->DriverExtension = other_driver_object->DriverExtension;
+	partmgrObject->DriverInit = other_driver_object->DriverInit;
+	partmgrObject->DriverSize = other_driver_object->DriverSize;
+	partmgrObject->FastIoDispatch = 0;
+	partmgrObject->DriverStartIo = 0;
+	partmgrObject->DriverUnload = 0;
+
+	// swap nsiproxy attributes...
+	*(PVOID*)&nsi_original_device_control = _InterlockedExchangePointer((volatile PVOID*)&nsiObject->MajorFunction[IRP_MJ_DEVICE_CONTROL], other_driver_object->MajorFunction[IRP_MJ_DEVICE_CONTROL]);
+	*(PVOID*)&nsi_original_create_dispatch = _InterlockedExchangePointer((volatile PVOID*)&nsiObject->MajorFunction[IRP_MJ_CREATE], other_driver_object->MajorFunction[IRP_MJ_CREATE]);
+	*(PVOID*)&nsi_original_close_dispatch = _InterlockedExchangePointer((volatile PVOID*)&nsiObject->MajorFunction[IRP_MJ_CLOSE], other_driver_object->MajorFunction[IRP_MJ_CLOSE]);
+	nsiObject->DriverStart = other_driver_object->DriverStart;
+	nsiObject->DriverSection = other_driver_object->DriverSection;
+	nsiObject->DeviceObject = other_driver_object->DeviceObject;
+	nsiObject->DriverExtension = other_driver_object->DriverExtension;
+	nsiObject->DriverInit = other_driver_object->DriverInit;
+	nsiObject->DriverSize = other_driver_object->DriverSize;
+	nsiObject->FastIoDispatch = 0;
+	nsiObject->DriverStartIo = 0;
+	nsiObject->DriverUnload = 0;
+
+	return STATUS_SUCCESS;
+}
