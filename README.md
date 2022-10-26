@@ -15,7 +15,7 @@
 - I don't want to change my account because I already have a Whitelist server | Join [Discord Server](https://discord.gg/MBTkVcJefp)
  
 
----
+--- 
 
 https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-a4f4-a2a6eca86eb0.mp4
 
