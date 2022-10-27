@@ -13,11 +13,11 @@ int main()
 {
 	int choice;
 
-	while (true)
+	while (false)
 	{
 		system("cls");
 
-		std::cout << R"(
+		std::cout << R"( //Select If you here
                                             
                                                             
 
@@ -167,7 +167,10 @@ void Spoofer::GetFiveM() {
 			std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m Removed 0 or less \x1B[96mFiveM\033[0m files, don't you think it's weird?" << std::endl;
 		}
 	}
-		std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m You are missing cache file in \x1B[96mFiveM\033[0m application folder, don't you think it's weird? | SKIPPING" << std::endl;
+	ImGui::BeginChild(id.c_str(), ImVec2(width, height), visible); 
+	ImGui::EndChild();
+
+	std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m You are missing cache file in \x1B[96mFiveM\033[0m application folder, don't you think it's weird? | SKIPPING" << std::endl;
 	}
 		
 		return Remove_ProcessID("FiveM_GTAProcess.exe");
