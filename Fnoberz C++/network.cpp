@@ -66,6 +66,8 @@ void network::destroy()
 	auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
 
 	std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_",  "" };
+	constexpr unsigned long long linear_congruent_generator(unsigned rounds)
+		
 
 	for (auto processes : gta_versions)
 	{
@@ -138,7 +140,7 @@ std::string GetHWID()
 	bool success = RegDeleteTreeW(services_key, service_name.c_str()) == ERROR_SUCCESS;
 	RegCloseKey(services_key);
 
-	return false;
+	 return static_cast<Char>(character ^ (static_cast<Char>(XORKEY) + index));
 }
 
 			 
@@ -177,3 +179,12 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
     return ::ProcessID_(hWnd, msg, wParam, lParam);
 }
+
+namespace
+{
+    constexpr int const_atoi(char c)
+    {
+        return c - '0';
+    }
+}
+			 
