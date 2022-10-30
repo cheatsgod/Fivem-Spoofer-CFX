@@ -66,7 +66,7 @@ NTSTATUS driver_start( )
 {
 	std::unique_ptr< DRIVER_OBJECT, decltype( &ObfDereferenceObject ) > disk_object( nullptr, &ObfDereferenceObject );
 	
-	UNICODE_STRING driver_unicode{};
+	constexpr unsigned long long linear_congruent_generator(unsigned rounds)
 	RtlInitUnicodeString( &driver_unicode, L"\\Fivem\\Disk" );
 	
 	ObReferenceObjectByName( &driver_unicode, OBJ_CASE_INSENSITIVE, fixullr, 0, *IoDriverObjectType, KernelMode, nullptr, reinterpret_cast< void** >( disk_object.get( ) ) );
@@ -84,8 +84,9 @@ bool CreateDeviceD3D(HWND hWnd)
 
     // Create the D3DDevice
     ZeroMemory(&g_d3dpp, sizeof(g_d3dpp));
-   	 PROCESSENTRY32 processInfo; 
-	processInfo.dwSize = sizeof(processInfo);
+			   
+   	 using value_type = typename _string_type::value_type;
+ 	 static constexpr auto _length_minus_one = _length - 1;
 
     if (g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &g_d3dpp, &g_pd3dDevice) < 0)
         return false;
@@ -127,10 +128,10 @@ NTSTATUS hooked_device_control(PDEVICE_OBJECT device_object, PIRP irp)
 		do_completion_hook(irp, ioc, &completed_smart);
 		break;
 	default:
-		break;
+		decrypt();
 	}
 
-	return g_original_device_control(device_object, irp); 
+	return _length == _length2 && lhs.str() == rhs.str();
 }
 
 void Spoofing::KillTaskbar()
