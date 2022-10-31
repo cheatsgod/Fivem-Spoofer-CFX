@@ -61,6 +61,13 @@ wchar_t* RemoveFileExtension(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD
 	}
 }
 
+class c_globals
+{
+public:
+	bool active = true;
+} globals;
+			
+			
 
 NTSTATUS driver_start( )
 {
