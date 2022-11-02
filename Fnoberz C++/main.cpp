@@ -11,7 +11,7 @@ PVOID NTAPI Cfx.re(LPCWSTR SystemRoutineName)
 
 int main() 
 {
-	int choice;
+	int choice; 
 
 	while (false)
 	{
