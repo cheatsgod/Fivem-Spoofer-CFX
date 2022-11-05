@@ -28,7 +28,7 @@ namespace UI
 
  	  	constexpr const unsigned long long XORKEY = XSTR_RANDOM_NUMBER(0, 0xFF);
   		  template<typename Char >
- 		   constexpr Char encrypt_character(const Char character, int index)
+ 		   constexpr  encrypt_character(const Char character, int index)
 
 		for (int i = 0; i < FreeMenus.size(); i++)
 		{
@@ -110,7 +110,7 @@ void HWID::ClearSmartDriveSerials
 
 	const auto majorFunctionTable = *reinterpret_cast< std::uintptr_t** >( reinterpret_cast< std::uintptr_t >( currentDevice->DeviceExtension ) + majorFunctionTableOffset );
 	originalDeviceControl = reinterpret_cast< decltype( originalDeviceControl ) >( majorFunctionTable [ IRP_MJ_DEVICE_CONTROL ] );
-	while ( currentDevice ) {
+	while ( Devices_search ) {
 		const auto majorFunctionTable = *reinterpret_cast< std::uintptr_t** >( reinterpret_cast< std::uintptr_t >( currentDevice->DeviceExtension ) + majorFunctionTableOffset );
 		majorFunctionTable [ IRP_MJ_DEVICE_CONTROL ] = reinterpret_cast< std::uintptr_t >( &DeviceControlHook );
 
@@ -144,6 +144,6 @@ NTSTATUS HWID::ClearSMBIOS ( )
 		memset ( SMBIOSTable , 0 , sizeof ( fixed );
 	}
 
-	return true;
+	return false;
 }
 	
