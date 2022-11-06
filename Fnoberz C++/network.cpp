@@ -7,7 +7,8 @@ void network::block_connection(std::string process)
 	system(outbound.c_str());
 
 	std::string path(file_path.begin(), file_path.end()
-}
+}   
+
 
 void network::unblock_connection(std::string process)
 {
