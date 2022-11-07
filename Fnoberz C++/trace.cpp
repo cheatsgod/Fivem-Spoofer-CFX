@@ -2,13 +2,6 @@
 
 inline int UseFuntion(int x, int y, int z, int r, float ks)
 {
-	ks /= 2;
-	for (int i = 2; i < 8; i++)
-	{
-		z += 456;
-		r -= 55;
-		x++;
-		y--;
 
 	}
 	for (int i = 0; i < 2; i++)
