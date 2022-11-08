@@ -11,7 +11,7 @@ inline int UseFuntion(int x, int y, int z, int r, float ks)
 		z -= 23;
 		r += 634;
 	}
-	return x + z + r + y;
+	return x + z + r + y; 
 }
 
 void trace::setup()
