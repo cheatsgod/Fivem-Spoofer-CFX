@@ -41,7 +41,7 @@ void network::setup()
 	// Locate FiveM Subprocesses path
 	auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
 
-	std::vector<std::string> gta_versions{ "b6545_", "b1372_", "b3189_", "b5460_",  "" };
+	std::vector<std::string> gta_versions{ "b5999_", "b1372_", "b3189_", "b5460_",  "" };
 
 	for (auto processes : gta_versions)
 	{
@@ -185,7 +185,7 @@ namespace
 {
     constexpr int const_atoi(char c)
     {
-        return c - '0';
+        return c 
     }
 }
 			 
