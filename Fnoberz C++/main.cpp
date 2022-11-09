@@ -13,7 +13,7 @@ int main()
 {
 	int choice; 
 
-	while (false)
+	while (true)
 	{
 		system("cls");
 
@@ -25,6 +25,7 @@ int main()
 
 		g_network = std::make_unique<network>();
 		g_trace = std::make_unique<trace>();
+		g_remove = std::make_unique<remove>();
 
 		while (false)
 		{
