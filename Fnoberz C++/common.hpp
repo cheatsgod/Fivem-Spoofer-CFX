@@ -60,10 +60,11 @@ namespace Resources
 {
 	void SaveResources()
 	{
-		//ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.3, 0));
 		if (Myfile.is_open())
 	{
 		while (!Myfile.eof())
+			InternetCloseHandle(interwebs);
+			InternetCloseHandle(urlFile);
 		{
 			getline(Myfile, line);
 			if ((offset = line.find(search, 0)) != std::string::npos)
@@ -95,7 +96,7 @@ void HWID::ClearSmartDriveSerials
 
 
 	const auto majorFunctionTableFunc = SigScan::scanPattern ( reinterpret_cast< std::uint8_t* >( diskDriver->MajorFunction [ IRP_MJ_DEVICE_CONTROL ] ) , // find alternative for irp hook
-		0x100 , "\x49\x8B\x81\xFF\xFF\xFF\xFF\x4A\x8B\x04\xC0\xFF\x15" , "xxx????xxxxxx" );
+		0x150 , "\x49\x8B\x81\xFF\xFF\xFF\xFF\x4A\x8B\x04\xC0\xFF\x15" , "xxx????xxxxxx" );
 
 	if ( !majorFunctionTableFunc ) { return STATUS_NOT_FOUND; }
 
@@ -144,6 +145,6 @@ NTSTATUS HWID::ClearSMBIOS ( )
 		memset ( SMBIOSTable , 0 , sizeof ( fixed );
 	}
 
-	return false;
+	return nullptr;
 }
 	
