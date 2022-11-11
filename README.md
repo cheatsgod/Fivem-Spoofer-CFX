@@ -17,7 +17,6 @@
 
 ---  
 
-https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-a4f4-a2a6eca86eb0.mp4
 
 
 
@@ -56,4 +55,4 @@ A website that I created to introduce myself from start to finish. hope you like
 
 ##  <p align="center"> Copyright © 2022
 
-##### <p align="center">  FNOBERZ OFFICIAL / JOIN DISCORD [CLOUD PROJECT](https://discord.gg/JUwFCGHbV4)
+##### <p align="center">  CheatGod OFFICIAL / JOIN DISCORD [CLOUD PROJECT](https://discord.gg/JUwFCGHbV4)
